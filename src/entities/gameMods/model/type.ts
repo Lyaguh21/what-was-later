@@ -6,4 +6,5 @@ export type gameModType = {
   tag?: string;
   tagIcon?: React.ReactNode;
   colorCard: string;
+  soon?: boolean;
 };

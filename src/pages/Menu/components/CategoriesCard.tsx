@@ -5,7 +5,7 @@ import { IconStack2Filled } from "@tabler/icons-react";
 export default function CategoriesCard() {
   return (
     <GlassCard className="col-span-2">
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center gap-4 mb-4">
         <div className="w-16 h-16 bg-linear-to-br from-blue-400 to-indigo-500 rounded-2xl flex items-center justify-center">
           <IconStack2Filled fill="white" size={42} />
         </div>

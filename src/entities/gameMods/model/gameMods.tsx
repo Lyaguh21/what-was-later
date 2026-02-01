@@ -29,6 +29,7 @@ export const gameMods = [
     tagIcon: <IconFlameFilled color="white" />,
     colorCard:
       "bg-gradient-to-br from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700",
+    soon: true,
   },
   {
     name: "Мультиплеер",
@@ -40,5 +41,6 @@ export const gameMods = [
       "bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700",
     tag: "Играй с друзьями",
     tagIcon: <IconDeviceGamepad color="white" />,
+    soon: true,
   },
 ];

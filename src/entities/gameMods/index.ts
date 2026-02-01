@@ -1,2 +1,2 @@
-export { gameMods } from "./gameMods";
-export type { gameModType } from "./type";
+export { gameMods } from "./model/gameMods";
+export type { gameModType } from "./model/type";
