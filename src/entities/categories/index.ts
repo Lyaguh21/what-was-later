@@ -1,2 +1,2 @@
 export { categories } from "./model/categories";
-export type { CategoryType } from "./model/type";
+export type { ICategoryCard, ICategory } from "./model/type";

@@ -1,7 +1,10 @@
+import { viewSlice } from "@/entities/view/model/viewSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    view: viewSlice.reducer,
+  },
 });
 
 export type _RootState = ReturnType<typeof store.getState>;

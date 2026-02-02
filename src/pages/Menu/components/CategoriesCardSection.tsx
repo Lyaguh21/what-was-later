@@ -1,8 +1,9 @@
-import { categories, type CategoryType } from "@/entities/categories";
+import { categories, type ICategoryCard } from "@/entities/categories";
 import { GlassCard } from "@/shared/ui/GlassCard";
+import { CategoryCard } from "@/widgets/CategoryCard";
 import { IconStack2Filled } from "@tabler/icons-react";
 
-export default function CategoriesCard() {
+export default function CategoriesCardSection() {
   return (
     <GlassCard className="col-span-2">
       <div className="flex items-center gap-4 mb-4">
@@ -16,16 +17,8 @@ export default function CategoriesCard() {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        {categories.map((category: CategoryType) => (
-          <button
-            key={category.key}
-            className="category-btn bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border-2 border-transparent hover:border-white/40 hover:scale-105"
-          >
-            <div className="*:size-13 *:stroke-white flex justify-center">
-              {category.icon}
-            </div>
-            <div className="text-white font-bold text-lg">{category.name}</div>
-          </button>
+        {categories.map((category: ICategoryCard) => (
+          <CategoryCard key={category.key} category={category} />
         ))}
       </div>
     </GlassCard>

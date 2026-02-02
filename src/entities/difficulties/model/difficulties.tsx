@@ -4,9 +4,9 @@ import {
   IconSkull,
   IconTimeline,
 } from "@tabler/icons-react";
-import type { difficultyType } from "./type";
+import type { IDifficultyCard } from "./type";
 
-export const difficulties: difficultyType[] = [
+export const difficulties: IDifficultyCard[] = [
   {
     key: "easy",
     name: "Легкий",

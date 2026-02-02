@@ -1,7 +1,7 @@
 import { GlassCard } from "@/shared/ui/GlassCard";
 import { IconTrophyFilled } from "@tabler/icons-react";
 
-export default function ScoreCard() {
+export default function ScoreCardSection() {
   return (
     <GlassCard className="col-span-1">
       <div className="flex justify-between gap-4 mb-4">
