@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IViewState {
+interface ISettingsState {
   selectGameMode: string | null;
   selectDifficulty: string | null;
   selectCategory: string | null;
 }
 
-export const viewInitialState: IViewState = {
+export const settingsInitialState: ISettingsState = {
   selectGameMode: null,
   selectDifficulty: null,
   selectCategory: null,
 };
 
-export const viewSlice = createSlice({
-  name: "view",
-  initialState: viewInitialState,
+export const settingsSlice = createSlice({
+  name: "settings",
+  initialState: settingsInitialState,
   reducers: {
     setGameMode: (state, action) => {
       state.selectGameMode = action.payload;
@@ -28,5 +28,6 @@ export const viewSlice = createSlice({
   },
 });
 
-export const { setGameMode, setDifficulty, setCategory } = viewSlice.actions;
-export default viewSlice.reducer;
+export const { setGameMode, setDifficulty, setCategory } =
+  settingsSlice.actions;
+export default settingsSlice.reducer;

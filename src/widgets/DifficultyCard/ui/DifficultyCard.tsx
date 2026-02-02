@@ -1,5 +1,5 @@
 import type { IDifficultyCard } from "@/entities/difficulties";
-import { selectDifficulty, setDifficulty } from "@/entities/view";
+import { selectDifficulty, setDifficulty } from "@/entities/settings";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import cn from "classnames";
 

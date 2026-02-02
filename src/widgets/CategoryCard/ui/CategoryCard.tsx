@@ -1,5 +1,5 @@
 import type { ICategoryCard } from "@/entities/categories";
-import { selectCategory, setCategory } from "@/entities/view";
+import { selectCategory, setCategory } from "@/entities/settings";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import cn from "classnames";
 

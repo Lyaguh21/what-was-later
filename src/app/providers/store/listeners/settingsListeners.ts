@@ -1,14 +1,14 @@
-import { setCategory, setDifficulty, setGameMode } from "@/entities/view";
+import { setCategory, setDifficulty, setGameMode } from "@/entities/settings";
 import { startAppListening } from "../listenerMiddleware";
 import { isAnyOf } from "@reduxjs/toolkit";
 
-export function viewListeners() {
+export function settingsListeners() {
   startAppListening({
     matcher: isAnyOf(setGameMode),
     effect: async (action, listenerApi) => {
       localStorage.setItem(
         "gameMode",
-        listenerApi.getState().view.selectGameMode ?? "",
+        listenerApi.getState().settings.selectGameMode ?? "",
       );
     },
   });
@@ -18,7 +18,7 @@ export function viewListeners() {
     effect: async (action, listenerApi) => {
       localStorage.setItem(
         "category",
-        listenerApi.getState().view.selectCategory ?? "",
+        listenerApi.getState().settings.selectCategory ?? "",
       );
     },
   });
@@ -28,7 +28,7 @@ export function viewListeners() {
     effect: async (action, listenerApi) => {
       localStorage.setItem(
         "difficulty",
-        listenerApi.getState().view.selectDifficulty ?? "",
+        listenerApi.getState().settings.selectDifficulty ?? "",
       );
     },
   });

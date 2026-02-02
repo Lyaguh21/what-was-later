@@ -2,7 +2,7 @@ import {
   createListenerMiddleware,
   type TypedStartListening,
 } from "@reduxjs/toolkit";
-import { viewListeners } from "./listeners/viewListeners";
+import { settingsListeners } from "./listeners/settingsListeners";
 
 export const listenerMiddleware = createListenerMiddleware();
 export const startAppListening =
@@ -12,5 +12,5 @@ export const startAppListening =
   >;
 
 export function registerListeners() {
-  viewListeners();
+  settingsListeners();
 }

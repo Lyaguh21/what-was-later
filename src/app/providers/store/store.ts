@@ -1,18 +1,18 @@
-import { viewSlice } from "@/entities/view/model/viewSlice";
+import { settingsSlice } from "@/entities/settings";
 import { configureStore } from "@reduxjs/toolkit";
 import { listenerMiddleware, registerListeners } from "./listenerMiddleware";
-import { loadViewState } from "./loadStates/loadViewState";
+import { loadSettingsState } from "./loadStates/loadSettingsState";
 
 export const store = configureStore({
   reducer: {
-    view: viewSlice.reducer,
+    settings: settingsSlice.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend(listenerMiddleware.middleware),
 
   preloadedState: {
-    view: loadViewState(),
+    settings: loadSettingsState(),
   },
 });
 

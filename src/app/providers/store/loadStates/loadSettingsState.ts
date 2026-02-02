@@ -1,6 +1,6 @@
-import { viewInitialState } from "@/entities/view";
+import { settingsInitialState } from "@/entities/settings";
 
-export function loadViewState() {
+export function loadSettingsState() {
   try {
     return {
       selectGameMode: localStorage.getItem("gameMode") ?? null,
@@ -8,6 +8,6 @@ export function loadViewState() {
       selectCategory: localStorage.getItem("category") ?? null,
     };
   } catch {
-    return viewInitialState;
+    return settingsInitialState;
   }
 }

@@ -1,13 +1,13 @@
 export {
-  viewSlice,
+  settingsSlice,
   setCategory,
   setDifficulty,
   setGameMode,
-  viewInitialState,
-} from "./model/viewSlice";
+  settingsInitialState,
+} from "./model/settingsSlice";
 
 export {
   selectGameMode,
   selectDifficulty,
   selectCategory,
-} from "./model/viewSelectors";
+} from "./model/settingsSelectors";

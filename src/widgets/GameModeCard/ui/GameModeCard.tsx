@@ -1,5 +1,5 @@
 import type { IGameModeCard } from "@/entities/gameMods";
-import { selectGameMode, setGameMode } from "@/entities/view";
+import { selectGameMode, setGameMode } from "@/entities/settings";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { IconLock } from "@tabler/icons-react";
 import cn from "classnames";

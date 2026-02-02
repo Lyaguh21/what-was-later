@@ -9,7 +9,7 @@ import {
   selectCategory,
   selectDifficulty,
   selectGameMode,
-} from "@/entities/view";
+} from "@/entities/settings";
 import { useNavigate } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, useEffect } from "react";
@@ -27,7 +27,7 @@ export default function Menu() {
     setShowStartButton(false);
     setTimeout(() => {
       navigate("/play");
-    }, 1500);
+    }, 1600);
   };
 
   const visibleStartGameButton =
