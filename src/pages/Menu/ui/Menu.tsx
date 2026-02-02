@@ -33,22 +33,45 @@ export default function Menu() {
     <>
       <div className="max-w-7xl">
         <div className="mb-4">
-          <motion.h1
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl font-black text-white mb-4 tracking-tight text-center"
-          >
-            Что было позже?
-          </motion.h1>
-          <motion.h2
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl text-white/80 font-medium text-center"
-          >
-            Проверь свои знания в истории!
-          </motion.h2>
+          <AnimatePresence>
+            {!isAnimated && (
+              <>
+                <motion.h1
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.8, delay: 0.2 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -100,
+                    transition: { delay: 1, duration: 0.45 },
+                  }}
+                  className="text-6xl font-black text-white mb-4 tracking-tight text-center"
+                >
+                  Что было позже?
+                </motion.h1>
+                <motion.h2
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.8, delay: 0.8 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: {
+                      duration: 0.5,
+                      delay: 1,
+                    },
+                  }}
+                  className="text-xl text-white/80 font-medium text-center"
+                >
+                  Проверь свои знания в истории!
+                </motion.h2>
+              </>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="grid lg:grid-rows-1 lg:grid-cols-3 gap-4 w-full mb-4">

@@ -6,7 +6,7 @@ interface IViewState {
   selectCategory: string | null;
 }
 
-const viewInitialState: IViewState = {
+export const viewInitialState: IViewState = {
   selectGameMode: null,
   selectDifficulty: null,
   selectCategory: null,

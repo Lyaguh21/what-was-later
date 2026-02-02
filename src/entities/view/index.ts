@@ -3,6 +3,7 @@ export {
   setCategory,
   setDifficulty,
   setGameMode,
+  viewInitialState,
 } from "./model/viewSlice";
 
 export {
