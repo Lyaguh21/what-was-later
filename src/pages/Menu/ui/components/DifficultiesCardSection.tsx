@@ -7,9 +7,16 @@ export default function DifficultiesCardSection() {
   return (
     <GlassCard
       initial={{ x: 200, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 200, opacity: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: 0.9 }}
+      animate={{
+        x: 0,
+        opacity: 1,
+        transition: { delay: 0.9, ease: "easeOut", duration: 0.5 },
+      }}
+      exit={{
+        x: 200,
+        opacity: 0,
+        transition: { delay: 0, ease: "easeOut", duration: 0.5 },
+      }}
       className="col-span-3 lg:col-span-1 flex flex-col grow"
     >
       <div className="flex items-center gap-4 mb-4">

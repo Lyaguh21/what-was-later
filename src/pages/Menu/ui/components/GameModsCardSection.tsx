@@ -7,9 +7,16 @@ export default function GameModsCardSection() {
   return (
     <GlassCard
       initial={{ x: -200, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: -200, opacity: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+      animate={{
+        x: 0,
+        opacity: 1,
+        transition: { delay: 0.6, ease: "easeOut", duration: 0.5 },
+      }}
+      exit={{
+        x: -200,
+        opacity: 0,
+        transition: { delay: 0.3, ease: "easeOut", duration: 0.5 },
+      }}
       className="col-span-3 lg:col-span-2"
     >
       <div className="flex items-center gap-4 mb-4">

@@ -5,9 +5,16 @@ export default function ScoreCardSection() {
   return (
     <GlassCard
       initial={{ x: -200, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: -200, opacity: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      animate={{
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.5, ease: "easeOut", delay: 0 },
+      }}
+      exit={{
+        x: -200,
+        opacity: 0,
+        transition: { duration: 0.3, ease: "easeOut", delay: 0.6 },
+      }}
       className="col-span-3 lg:col-span-1 flex flex-col"
     >
       <div className="flex  gap-4 mb-4">

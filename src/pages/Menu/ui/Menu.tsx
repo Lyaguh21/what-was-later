@@ -11,38 +11,66 @@ import {
   selectGameMode,
 } from "@/entities/view";
 import { useNavigate } from "react-router";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 
 export default function Menu() {
   const navigate = useNavigate();
+  const [isAnimated, setAnimated] = useState(false);
 
   const selectedGameMode = useAppSelector(selectGameMode);
   const selectedDifficulty = useAppSelector(selectDifficulty);
   const selectedCategory = useAppSelector(selectCategory);
 
   const navigateToGame = () => {
-    navigate("/play");
+    setAnimated(true);
+    setTimeout(() => {
+      navigate("/play");
+    }, 1500);
   };
 
   return (
     <>
       <div className="max-w-7xl">
         <div className="mb-4">
-          <h1 className="text-6xl font-black text-white mb-4 tracking-tight text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-6xl font-black text-white mb-4 tracking-tight text-center"
+          >
             Что было позже?
-          </h1>
-          <h2 className="text-xl text-white/80 font-medium text-center">
+          </motion.h1>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-xl text-white/80 font-medium text-center"
+          >
             Проверь свои знания в истории!
-          </h2>
+          </motion.h2>
         </div>
 
         <div className="grid lg:grid-rows-1 lg:grid-cols-3 gap-4 w-full mb-4">
-          <ScoreCardSection />
-          <CategoriesCardSection />
+          <AnimatePresence>
+            {!isAnimated && (
+              <>
+                <ScoreCardSection />
+                <CategoriesCardSection />
+              </>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="grid lg:grid-rows-1 lg:grid-cols-3 gap-4 w-full">
-          <GameModsCardSection />
-          <DifficultiesCardSection />
+          <AnimatePresence>
+            {!isAnimated && (
+              <>
+                <GameModsCardSection />
+                <DifficultiesCardSection />
+              </>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
