@@ -13,6 +13,7 @@ export const difficulties: IDifficultyCard[] = [
     icon: <IconPlant color="white" />,
     colorCard:
       "bg-gradient-to-br from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600",
+    colorShadow: "shadow-green-600/40",
     tag: "±50+ лет",
   },
   {
@@ -21,6 +22,7 @@ export const difficulties: IDifficultyCard[] = [
     icon: <IconTimeline color="white" />,
     colorCard:
       "bg-gradient-to-br from-blue-400 to-cyan-500 hover:from-blue-500 hover:to-cyan-600",
+    colorShadow: "shadow-cyan-600/40",
     tag: "±20-50 лет",
   },
   {
@@ -29,6 +31,7 @@ export const difficulties: IDifficultyCard[] = [
     icon: <IconFlameFilled color="white" />,
     colorCard:
       "bg-gradient-to-br from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600",
+    colorShadow: "shadow-orange-600/40",
     tag: "±5-10 лет",
   },
   {
@@ -37,6 +40,7 @@ export const difficulties: IDifficultyCard[] = [
     icon: <IconSkull color="white" />,
     colorCard:
       "bg-gradient-to-br from-purple-500 to-fuchsia-600 hover:from-purple-600 hover:to-fuchsia-700",
+    colorShadow: "shadow-fuchsia-600/50",
     tag: "±1-5 лет",
   },
 ];

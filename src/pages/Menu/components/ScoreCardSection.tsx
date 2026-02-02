@@ -3,8 +3,8 @@ import { IconTrophyFilled } from "@tabler/icons-react";
 
 export default function ScoreCardSection() {
   return (
-    <GlassCard className="col-span-1">
-      <div className="flex justify-between gap-4 mb-4">
+    <GlassCard className="col-span-3 lg:col-span-1 flex flex-col">
+      <div className="flex  gap-4 mb-4">
         <div className="p-2 flex items-center justify-center w-16 h-16 bg-linear-to-br from-yellow-400 to-orange-500 rounded-2xl ">
           <IconTrophyFilled fill="white" size={42} />
         </div>
@@ -15,7 +15,7 @@ export default function ScoreCardSection() {
         </div>
       </div>
 
-      <div className="bg-white/10 rounded-2xl p-6 text-center  ">
+      <div className="bg-white/10 rounded-2xl p-6 text-center grow flex flex-col justify-center">
         <div className="text-white/70 text-sm font-medium mb-2">
           Максимальный счет
         </div>

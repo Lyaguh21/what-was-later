@@ -9,7 +9,7 @@ export default function GlassCard({
   return (
     <div
       className={cn(
-        `bg-white/10 backdrop-blur-lg rounded-3xl p-6 border-2 border-white/20 fade-in`,
+        `bg-white/10 backdrop-blur-lg rounded-3xl p-2 md:p-6 border-2 border-white/20 fade-in`,
         className,
       )}
     >

@@ -14,10 +14,10 @@ export default function DifficultyCard({
   return (
     <button
       className={cn(
-        "grow items-center rounded-2xl p-2 transition-all duration-300 border-2 border-transparent hover:border-white/40 hover:scale-105 flex justify-between ",
+        "w-full grow items-center rounded-2xl p-2 transition-all duration-300 border-2 border-transparent hover:border-white/40 hover:scale-105 flex justify-between ",
         difficulty.colorCard,
         {
-          "border-2 border-white/60 scale-110":
+          [`border-2 border-white/60 scale-[104%] md:scale-110 shadow-xl ${difficulty.colorShadow}`]:
             selectedDifficulty === difficulty.key,
         },
       )}
@@ -28,7 +28,7 @@ export default function DifficultyCard({
         <div className="text-white font-bold text-2xl">{difficulty.name}</div>
       </div>
 
-      <div className="bg-white/20 rounded-lg py-1 px-2 text-white/90 text-xs font-medium w-20">
+      <div className="bg-white/20 rounded-lg py-1 px-1 text-white/90 text-xs font-medium w-19">
         {difficulty.tag}
       </div>
     </button>

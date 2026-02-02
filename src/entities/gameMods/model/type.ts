@@ -6,6 +6,7 @@ export interface IGameMode {
 export type IGameModeCard = Pick<IGameMode, "key" | "name"> & {
   description: string;
   colorCard: string;
+  colorShadow: string;
   icon?: React.ReactNode;
   tag?: string;
   tagIcon?: React.ReactNode;

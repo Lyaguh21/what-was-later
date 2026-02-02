@@ -5,7 +5,7 @@ import { DifficultyCard } from "@/widgets/DifficultyCard";
 
 export default function DifficultiesCardSection() {
   return (
-    <GlassCard className="col-span-1 flex flex-col grow">
+    <GlassCard className="col-span-3 lg:col-span-1 flex flex-col grow">
       <div className="flex items-center gap-4 mb-4">
         <div className="w-16 h-16 bg-linear-to-br from-red-400 to-pink-500 rounded-2xl flex items-center justify-center">
           <IconBrandSpeedtest size={42} color="white" />

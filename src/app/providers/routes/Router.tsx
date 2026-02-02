@@ -1,10 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { Menu } from "@/pages/Menu";
+import { MainLayout } from "@/shared/ui/layouts";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Menu />,
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Menu />,
+      },
+    ],
   },
 ]);
 

@@ -5,7 +5,7 @@ import { IconDeviceGamepad2 } from "@tabler/icons-react";
 
 export default function GameModsCardSection() {
   return (
-    <GlassCard className="col-span-2">
+    <GlassCard className="col-span-3 lg:col-span-2">
       <div className="flex items-center gap-4 mb-4">
         <div className="w-16 h-16 bg-linear-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center">
           <IconDeviceGamepad2 color="white" size={42} />
@@ -15,7 +15,7 @@ export default function GameModsCardSection() {
           <p className="text-white/60 text-sm">Выберите способ игры</p>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-col-1 md:grid-cols-3 gap-4">
         {gameMods.map((mod: IGameModeCard) => (
           <GameModeCard mod={mod} key={mod.key} />
         ))}

@@ -17,8 +17,8 @@ export default function Menu() {
   const selectedCategory = useAppSelector(selectCategory);
 
   return (
-    <div className="h-full w-full min-h-screen flex justify-center bg-linear-to-br from-indigo-900 via-purple-900 to-pink-900">
-      <div className="max-w-7xl px-8 py-4">
+    <>
+      <div className="max-w-7xl">
         <div className="mb-4">
           <h1 className="text-6xl font-black text-white mb-4 tracking-tight text-center">
             Что было позже?
@@ -27,18 +27,18 @@ export default function Menu() {
             Проверь свои знания в истории!
           </h2>
         </div>
-        <div className="grid grid-cols-3 gap-4 w-full mb-4">
+        <div className="grid lg:grid-rows-1 lg:grid-cols-3 gap-4 w-full mb-4">
           <ScoreCardSection />
           <CategoriesCardSection />
         </div>
 
-        <div className="grid grid-cols-3 gap-4 w-full">
+        <div className="grid lg:grid-rows-1 lg:grid-cols-3 gap-4 w-full">
           <GameModsCardSection />
           <DifficultiesCardSection />
         </div>
       </div>
 
-      <div className="absolute bottom-2.5">
+      <div className="fixed bottom-2.5 left-1/2 transform -translate-x-1/2">
         <Button
           text="Начать игру"
           icon={<IconRocket size={32} />}
@@ -53,6 +53,6 @@ export default function Menu() {
           }
         />
       </div>
-    </div>
+    </>
   );
 }
