@@ -12,7 +12,7 @@ import {
 } from "@/entities/view";
 import { useNavigate } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Menu() {
   const navigate = useNavigate();
@@ -24,10 +24,22 @@ export default function Menu() {
 
   const navigateToGame = () => {
     setAnimated(true);
+    setShowStartButton(false);
     setTimeout(() => {
       navigate("/play");
     }, 1500);
   };
+
+  const visibleStartGameButton =
+    Boolean(selectedCategory) &&
+    Boolean(selectedGameMode && Boolean(selectedDifficulty));
+
+  const [showStartButton, setShowStartButton] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowStartButton(true), 1700);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <>
@@ -97,19 +109,24 @@ export default function Menu() {
         </div>
       </div>
 
-      <div className="fixed bottom-2.5 left-1/2 transform -translate-x-1/2">
-        <Button
-          text="Начать игру"
-          icon={<IconRocket size={32} />}
-          onClick={navigateToGame}
-          disabled={
-            !(
-              Boolean(selectedCategory) &&
-              Boolean(selectedGameMode && Boolean(selectedDifficulty))
-            )
-          }
-        />
-      </div>
+      <AnimatePresence>
+        {visibleStartGameButton && showStartButton && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.6 }}
+            className="fixed bottom-5 left-1/2 transform -translate-x-1/2"
+          >
+            <Button
+              text="Начать игру"
+              icon={<IconRocket size={32} />}
+              onClick={navigateToGame}
+              disabled={!visibleStartGameButton}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

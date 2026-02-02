@@ -1,5 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 import cn from "classnames";
+
 export default function Button({
   text,
   icon,
