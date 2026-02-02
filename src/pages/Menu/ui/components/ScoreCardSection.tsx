@@ -3,7 +3,13 @@ import { IconTrophyFilled } from "@tabler/icons-react";
 
 export default function ScoreCardSection() {
   return (
-    <GlassCard className="col-span-3 lg:col-span-1 flex flex-col">
+    <GlassCard
+      initial={{ x: -200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -200, opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="col-span-3 lg:col-span-1 flex flex-col"
+    >
       <div className="flex  gap-4 mb-4">
         <div className="p-2 flex items-center justify-center w-16 h-16 bg-linear-to-br from-yellow-400 to-orange-500 rounded-2xl ">
           <IconTrophyFilled fill="white" size={42} />

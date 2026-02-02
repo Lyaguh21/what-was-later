@@ -5,7 +5,13 @@ import { IconDeviceGamepad2 } from "@tabler/icons-react";
 
 export default function GameModsCardSection() {
   return (
-    <GlassCard className="col-span-3 lg:col-span-2">
+    <GlassCard
+      initial={{ x: -200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -200, opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+      className="col-span-3 lg:col-span-2"
+    >
       <div className="flex items-center gap-4 mb-4">
         <div className="w-16 h-16 bg-linear-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center">
           <IconDeviceGamepad2 color="white" size={42} />

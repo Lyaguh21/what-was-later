@@ -10,11 +10,18 @@ import {
   selectDifficulty,
   selectGameMode,
 } from "@/entities/view";
+import { useNavigate } from "react-router";
 
 export default function Menu() {
+  const navigate = useNavigate();
+
   const selectedGameMode = useAppSelector(selectGameMode);
   const selectedDifficulty = useAppSelector(selectDifficulty);
   const selectedCategory = useAppSelector(selectCategory);
+
+  const navigateToGame = () => {
+    navigate("/play");
+  };
 
   return (
     <>
@@ -27,6 +34,7 @@ export default function Menu() {
             Проверь свои знания в истории!
           </h2>
         </div>
+
         <div className="grid lg:grid-rows-1 lg:grid-cols-3 gap-4 w-full mb-4">
           <ScoreCardSection />
           <CategoriesCardSection />
@@ -42,9 +50,7 @@ export default function Menu() {
         <Button
           text="Начать игру"
           icon={<IconRocket size={32} />}
-          onClick={() => {
-            console.log("start game");
-          }}
+          onClick={navigateToGame}
           disabled={
             !(
               Boolean(selectedCategory) &&
