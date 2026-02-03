@@ -3,11 +3,13 @@ import cn from "classnames";
 
 export default function Button({
   text,
-  icon,
+  iconLeft,
+  iconRight,
   ...props
 }: {
   text: string;
-  icon?: React.ReactNode;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
@@ -22,8 +24,9 @@ export default function Button({
       {...props}
     >
       <div className="flex justify-center items-center gap-2">
-        {icon}
+        {iconLeft}
         <p className="text-nowrap">{text}</p>
+        {iconRight}
       </div>
     </button>
   );

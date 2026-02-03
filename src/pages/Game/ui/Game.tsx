@@ -8,16 +8,19 @@ import {
 } from "@/entities/settings";
 import { Navigate } from "react-router";
 import { useEffect } from "react";
-import { nextRound } from "@/features/game";
+import { startGame } from "@/features/game";
+import { useAppDispatch } from "@/shared/lib";
 
 export default function Game() {
   const category = useAppSelector(selectCategory);
   const difficulty = useAppSelector(selectDifficulty);
   const gameMode = useAppSelector(selectGameMode);
 
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    nextRound();
-  }, []);
+    dispatch(startGame());
+  }, [dispatch]);
 
   if (!category || !difficulty || !gameMode) {
     return <Navigate to="/" replace />;

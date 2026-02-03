@@ -1,10 +1,13 @@
-import type { IGameEvent } from "@/entities/game";
+import { selectGameRoundStatus, type IGameEvent } from "@/entities/game";
+import { useAppSelector } from "@/shared/lib";
 import { AnimatePresence, motion, type MotionProps } from "framer-motion";
 
 export default function GameEventCard({
   event,
   ...props
-}: { event: IGameEvent } & MotionProps) {
+}: { event: IGameEvent } & MotionProps & React.HTMLAttributes<HTMLDivElement>) {
+  const roundStatus = useAppSelector(selectGameRoundStatus);
+
   return (
     <motion.div
       className="bg-white rounded-3xl shadow-2xl overflow-hidden w-[520px] cursor-pointer"
@@ -29,12 +32,12 @@ export default function GameEventCard({
         <p className="text-gray-600 text-lg mb-6">{event.description}</p>
 
         <AnimatePresence>
-          {false && (
+          {roundStatus !== "idle" && (
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 1, scale: 0.5 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className=""
             >
               <div className="bg-linear-to-r from-indigo-500 to-purple-500 border-2 border-white/30 shadow-xl shadow-indigo-600/60 rounded-2xl p-4 text-center">

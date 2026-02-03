@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { IGameEvent } from "../type";
 
 interface initialGameStateType {
   score: number;
@@ -8,6 +9,8 @@ interface initialGameStateType {
   countGame: number;
   usedIds: number[];
   roundStatus: "idle" | "animating" | "succeeded" | "failed";
+  firstEvent: IGameEvent | null;
+  secondEvent: IGameEvent | null;
 }
 
 export const gameInitialState: initialGameStateType = {
@@ -20,6 +23,8 @@ export const gameInitialState: initialGameStateType = {
   topStreak: 0,
 
   roundStatus: "idle",
+  firstEvent: null,
+  secondEvent: null,
 };
 
 export const gameSlice = createSlice({
@@ -57,11 +62,21 @@ export const gameSlice = createSlice({
       state.roundStatus = action.payload;
     },
 
+    setFirstEvent: (state, action) => {
+      state.firstEvent = action.payload;
+    },
+
+    setSecondEvent: (state, action) => {
+      state.secondEvent = action.payload;
+    },
+
     resetGame: (state) => {
       state.usedIds = [];
       state.score = 0;
       state.streak = 0;
       state.roundStatus = "idle";
+      state.firstEvent = null;
+      state.secondEvent = null;
     },
   },
 });
@@ -77,5 +92,7 @@ export const {
   setTopStreak,
   addScore,
   setRoundStatus,
+  setFirstEvent,
+  setSecondEvent,
 } = gameSlice.actions;
 export default gameSlice.reducer;

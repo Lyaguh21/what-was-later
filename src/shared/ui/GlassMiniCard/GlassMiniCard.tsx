@@ -4,7 +4,6 @@ import cn from "classnames";
 export default function GlassMiniCard({
   className,
   children,
-  ...props
 }: {
   className?: string;
   children: React.ReactNode;
@@ -16,7 +15,6 @@ export default function GlassMiniCard({
         "bg-white/20 backdrop-blur-sm rounded-full px-8 py-3 flex items-center gap-3 ",
         className,
       )}
-      {...props}
     >
       {children}
     </motion.div>

@@ -23,7 +23,6 @@ export type IDifficultyCard = Pick<IDifficulty, "key" | "name"> & {
 
   windowStart: number;
   windowEnd: number;
-  gap: number;
 };
 
 //? Режим игры

@@ -18,7 +18,6 @@ export const difficulties: IDifficultyCard[] = [
 
     windowStart: 50,
     windowEnd: 100,
-    gap: 20,
   },
   {
     key: "medium",
@@ -31,7 +30,6 @@ export const difficulties: IDifficultyCard[] = [
 
     windowStart: 20,
     windowEnd: 50,
-    gap: 10,
   },
   {
     key: "hard",
@@ -44,7 +42,6 @@ export const difficulties: IDifficultyCard[] = [
 
     windowStart: 5,
     windowEnd: 20,
-    gap: 2,
   },
   {
     key: "insane",
@@ -57,6 +54,5 @@ export const difficulties: IDifficultyCard[] = [
 
     windowStart: 1,
     windowEnd: 5,
-    gap: 0.5,
   },
 ];

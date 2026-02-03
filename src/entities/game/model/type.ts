@@ -1,5 +1,5 @@
 export interface IGameEvent {
-  ids: number;
+  id: number;
   name: string;
   date: string;
   description: string;

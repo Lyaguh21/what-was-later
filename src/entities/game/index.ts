@@ -4,6 +4,8 @@ export {
   setTopScore,
   setCountGame,
   setUsedIds,
+  setFirstEvent,
+  setSecondEvent,
   resetGame,
   addOneToStreak,
   setStreak,
@@ -22,6 +24,8 @@ export {
   selectGameStreak,
   selectGameTopStreak,
   selectGameRoundStatus,
+  selectGameFirstEvent,
+  selectGameSecondEvent,
 } from "./model/store/gameSelectors";
 
 export type { IGameEvent } from "./model/type";

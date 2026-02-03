@@ -8,3 +8,6 @@ export const selectGameCountGame = (state: RootState) => state.game.countGame;
 export const selectGameUsedIds = (state: RootState) => state.game.usedIds;
 export const selectGameRoundStatus = (state: RootState) =>
   state.game.roundStatus;
+
+export const selectGameFirstEvent = (state: RootState) => state.game.firstEvent;
+export const selectGameSecondEvent = (state: RootState) => state.game.secondEvent;
