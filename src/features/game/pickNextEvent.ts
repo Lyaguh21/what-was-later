@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { allHistoryEvents, type IGameEvent } from "@/entities/game";
 import { setUsedIds, setSecondEvent } from "@/entities/game";
+import { difficulties } from "@/entities/settings";
 
 type Arg = { firstEventId: number; addFirstToUsed?: boolean };
 
@@ -17,6 +18,14 @@ export const pickNextEvent = createAsyncThunk<
   const { firstEventId, addFirstToUsed } = arg;
   const state = getState();
   const usedIds = state.game.usedIds || [];
+  const selectedDifficulty = state.settings.selectDifficulty;
+
+  const windowStart = difficulties.find(
+    (el) => el.key === selectedDifficulty,
+  )?.windowStart;
+  const windowEnd = difficulties.find(
+    (el) => el.key === selectedDifficulty,
+  )?.windowEnd;
 
   const first = allHistoryEvents.find((e) => e.id === firstEventId);
   if (!first) return undefined;
@@ -28,7 +37,7 @@ export const pickNextEvent = createAsyncThunk<
     if (usedIds.includes(e.id)) return false;
     const y = parseYear(e.date);
     const diff = Math.abs(y - firstYear);
-    return diff >= 1 && diff <= 300; //*Window of 20 to 300 years
+    return diff >= windowStart && diff <= windowEnd; //*Window of 20 to 300 years
   });
 
   let candidates = withinWindow;
