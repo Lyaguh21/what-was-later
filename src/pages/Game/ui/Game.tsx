@@ -10,6 +10,7 @@ import { Navigate } from "react-router";
 import { useEffect } from "react";
 import { startGame } from "@/features/game";
 import { useAppDispatch } from "@/shared/lib";
+import ButtonsControl from "./components/ButtonsControl";
 
 export default function Game() {
   const category = useAppSelector(selectCategory);
@@ -30,6 +31,7 @@ export default function Game() {
     <div className="flex flex-col h-full grow justify-center items-center">
       <Header />
       <GameEventCardSection />
+      <ButtonsControl />
     </div>
   );
 }

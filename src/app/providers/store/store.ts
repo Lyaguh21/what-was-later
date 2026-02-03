@@ -5,10 +5,13 @@ import { loadSettingsState } from "./loadStates/loadSettingsState";
 import { gameSlice } from "@/entities/game";
 import { loadGameState } from "./loadStates/loadGameState";
 
+import {viewSlice} from "@/entities/view";
+
 export const store = configureStore({
   reducer: {
     settings: settingsSlice.reducer,
     game: gameSlice.reducer,
+    view: viewSlice.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>

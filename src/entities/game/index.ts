@@ -2,7 +2,7 @@ export {
   gameSlice,
   setScore,
   setTopScore,
-  setCountGame,
+  addCountGame,
   setUsedIds,
   setFirstEvent,
   setSecondEvent,

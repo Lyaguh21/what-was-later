@@ -1,7 +1,7 @@
 import { IconRocket } from "@tabler/icons-react";
 import { Button } from "@/shared/ui/Button";
 
-import { useAppSelector } from "@/shared/lib";
+import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import {
   selectCategory,
   selectDifficulty,
@@ -14,9 +14,11 @@ import ScoreCardSection from "./components/ScoreCardSection";
 import CategoriesCardSection from "./components/CategoriesCardSection";
 import GameModsCardSection from "./components/GameModsCardSection";
 import DifficultiesCardSection from "./components/DifficultiesCardSection";
+import { addCountGame } from "@/entities/game";
 
 export default function Menu() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [isAnimated, setAnimated] = useState(false);
 
   const selectedGameMode = useAppSelector(selectGameMode);
@@ -28,6 +30,7 @@ export default function Menu() {
     setShowStartButton(false);
     setTimeout(() => {
       navigate("/play");
+      dispatch(addCountGame());
     }, 1600);
   };
 
@@ -121,7 +124,7 @@ export default function Menu() {
           >
             <Button
               text="Начать игру"
-              icon={<IconRocket size={32} />}
+              iconLeft={<IconRocket size={32} />}
               onClick={navigateToGame}
               disabled={!visibleStartGameButton}
             />

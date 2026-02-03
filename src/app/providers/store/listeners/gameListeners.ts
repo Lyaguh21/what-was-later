@@ -1,10 +1,10 @@
 import { isAnyOf } from "@reduxjs/toolkit";
 import { startAppListening } from "../listenerMiddleware";
-import { setCountGame, setTopScore, setTopStreak } from "@/entities/game";
+import { addCountGame, setTopScore, setTopStreak } from "@/entities/game";
 
 export function gameListeners() {
   startAppListening({
-    matcher: isAnyOf(setTopScore, setTopStreak, setCountGame),
+    matcher: isAnyOf(setTopScore, setTopStreak, addCountGame),
     effect: async (action, listenerApi) => {
       localStorage.setItem(
         "topScore",

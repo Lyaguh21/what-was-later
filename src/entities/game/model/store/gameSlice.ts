@@ -38,7 +38,9 @@ export const gameSlice = createSlice({
       state.score += action.payload;
     }, //* добавить количество очков  счету
     setTopScore: (state, action) => {
-      state.topScore = action.payload;
+      if (action.payload > state.topScore) {
+        state.topScore = action.payload;
+      }
     }, //* задать максимальный счет
 
     setStreak: (state, action) => {
@@ -48,11 +50,13 @@ export const gameSlice = createSlice({
       state.streak += 1;
     }, //* добавить 1 к серии подряд
     setTopStreak: (state, action) => {
-      state.topStreak = action.payload;
+      if (action.payload > state.topStreak) {
+        state.topStreak = action.payload;
+      }
     }, //* задать максимальную серию подряд
 
-    setCountGame: (state, action) => {
-      state.countGame = action.payload;
+    addCountGame: (state) => {
+      state.countGame += 1;
     }, //* задать количество игр
     setUsedIds: (state, action) => {
       state.usedIds = action.payload;
@@ -84,7 +88,7 @@ export const gameSlice = createSlice({
 export const {
   setScore,
   setTopScore,
-  setCountGame,
+  addCountGame,
   setUsedIds,
   resetGame,
   addOneToStreak,

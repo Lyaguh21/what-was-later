@@ -5,9 +5,11 @@ export default function Button({
   text,
   iconLeft,
   iconRight,
+  className,
   ...props
 }: {
-  text: string;
+  className?: string;
+  text?: string;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
@@ -20,12 +22,19 @@ export default function Button({
         {
           "hover:scale-none": isMobile,
         },
+        className,
       )}
       {...props}
     >
       <div className="flex justify-center items-center gap-2">
         {iconLeft}
-        <p className="text-nowrap">{text}</p>
+        <p
+          className={cn("text-nowrap", {
+            hidden: !text,
+          })}
+        >
+          {text}
+        </p>
         {iconRight}
       </div>
     </button>

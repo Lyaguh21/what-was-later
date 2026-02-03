@@ -6,7 +6,7 @@ import {
   IconGlobe,
   IconPalette,
 } from "@tabler/icons-react";
-import type { ICategoryCard } from "../../categories/model/type";
+import type { ICategoryCard } from "./type";
 
 export const categories: ICategoryCard[] = [
   {
