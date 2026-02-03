@@ -6,7 +6,7 @@ export default function GlassMiniCard({
   children,
   ...props
 }: {
-  className: string;
+  className?: string;
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement> &
   MotionProps) {

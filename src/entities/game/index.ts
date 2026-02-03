@@ -3,7 +3,7 @@ export {
   setScore,
   setTopScore,
   setCountGame,
-  setIdsQuestions,
+  setUsedIds,
   resetGame,
   addOneToStreak,
   setStreak,
@@ -16,7 +16,7 @@ export {
 export {
   selectGame,
   selectGameCountGame,
-  selectGameIdsQuestions,
+  selectGameUsedIds,
   selectGameScore,
   selectGameTopScore,
   selectGameStreak,

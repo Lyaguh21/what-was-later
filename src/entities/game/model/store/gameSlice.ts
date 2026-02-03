@@ -6,14 +6,14 @@ interface initialGameStateType {
   streak: number;
   topStreak: number;
   countGame: number;
-  idsQuestions: number[];
+  usedIds: number[];
   roundStatus: "idle" | "animating" | "succeeded" | "failed";
 }
 
 export const gameInitialState: initialGameStateType = {
   score: 0,
   streak: 0,
-  idsQuestions: [],
+  usedIds: [],
 
   topScore: 0,
   countGame: 0,
@@ -49,8 +49,8 @@ export const gameSlice = createSlice({
     setCountGame: (state, action) => {
       state.countGame = action.payload;
     }, //* задать количество игр
-    setIdsQuestions: (state, action) => {
-      state.idsQuestions = action.payload;
+    setUsedIds: (state, action) => {
+      state.usedIds = action.payload;
     },
 
     setRoundStatus: (state, action) => {
@@ -58,7 +58,7 @@ export const gameSlice = createSlice({
     },
 
     resetGame: (state) => {
-      state.idsQuestions = [];
+      state.usedIds = [];
       state.score = 0;
       state.streak = 0;
       state.roundStatus = "idle";
@@ -70,7 +70,7 @@ export const {
   setScore,
   setTopScore,
   setCountGame,
-  setIdsQuestions,
+  setUsedIds,
   resetGame,
   addOneToStreak,
   setStreak,
