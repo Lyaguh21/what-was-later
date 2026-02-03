@@ -3,6 +3,7 @@ import {
   type TypedStartListening,
 } from "@reduxjs/toolkit";
 import { settingsListeners } from "./listeners/settingsListeners";
+import { gameListeners } from "./listeners/gameListeners";
 
 export const listenerMiddleware = createListenerMiddleware();
 export const startAppListening =
@@ -13,4 +14,5 @@ export const startAppListening =
 
 export function registerListeners() {
   settingsListeners();
+  gameListeners();
 }

@@ -1,7 +1,16 @@
+import {
+  selectGameCountGame,
+  selectGameTopScore,
+  selectGameTopStreak,
+} from "@/entities/game";
+import { useAppSelector } from "@/shared/lib";
 import { GlassCard } from "@/shared/ui/GlassCard";
 import { IconTrophyFilled } from "@tabler/icons-react";
 
 export default function ScoreCardSection() {
+  const countGame = useAppSelector(selectGameCountGame);
+  const topScore = useAppSelector(selectGameTopScore);
+  const topStreak = useAppSelector(selectGameTopStreak);
   return (
     <GlassCard
       initial={{ x: -200, opacity: 0 }}
@@ -33,16 +42,16 @@ export default function ScoreCardSection() {
           Максимальный счет
         </div>
         <div className="text-white text-6xl font-black mb-4" id="personal-best">
-          42
+          {topScore}
         </div>
         <div className="flex justify-center gap-6 text-white/80">
           <div>
-            <div className="text-3xl font-bold">15</div>
+            <div className="text-3xl font-bold">{topStreak}</div>
             <div className="text-xs">Лучшая серия</div>
           </div>
           <div className="w-px bg-white/20"></div>
           <div>
-            <div className="text-3xl font-bold">127</div>
+            <div className="text-3xl font-bold">{countGame}</div>
             <div className="text-xs">Всего игр</div>
           </div>
         </div>
