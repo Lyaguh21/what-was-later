@@ -1,4 +1,4 @@
-import type { IGameModeCard } from "@/entities/gameMods";
+import type { IGameModeCard } from "@/entities/settings";
 import { selectGameMode, setGameMode } from "@/entities/settings";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { IconLock } from "@tabler/icons-react";

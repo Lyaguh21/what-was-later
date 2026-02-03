@@ -7,6 +7,7 @@ interface initialGameStateType {
   topStreak: number;
   countGame: number;
   idsQuestions: number[];
+  roundStatus: "idle" | "animating" | "succeeded" | "failed";
 }
 
 export const gameInitialState: initialGameStateType = {
@@ -17,6 +18,8 @@ export const gameInitialState: initialGameStateType = {
   topScore: 0,
   countGame: 0,
   topStreak: 0,
+
+  roundStatus: "idle",
 };
 
 export const gameSlice = createSlice({
@@ -50,10 +53,15 @@ export const gameSlice = createSlice({
       state.idsQuestions = action.payload;
     },
 
+    setRoundStatus: (state, action) => {
+      state.roundStatus = action.payload;
+    },
+
     resetGame: (state) => {
       state.idsQuestions = [];
       state.score = 0;
       state.streak = 0;
+      state.roundStatus = "idle";
     },
   },
 });
@@ -68,5 +76,6 @@ export const {
   setStreak,
   setTopStreak,
   addScore,
+  setRoundStatus,
 } = gameSlice.actions;
 export default gameSlice.reducer;

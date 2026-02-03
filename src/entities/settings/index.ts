@@ -4,10 +4,19 @@ export {
   setDifficulty,
   setGameMode,
   settingsInitialState,
-} from "./model/settingsSlice";
+} from "./model/store/settingsSlice";
 
 export {
   selectGameMode,
   selectDifficulty,
   selectCategory,
-} from "./model/settingsSelectors";
+} from "./model/store/settingsSelectors";
+
+export { categories } from "../settings/model/categories";
+export type { ICategoryCard, ICategory } from "./model/type";
+
+export type { IDifficulty, IDifficultyCard } from "./model/type";
+export { difficulties } from "./model/difficulties";
+
+export { gameMods } from "./model/gameMods";
+export type { IGameModeCard, IGameMode } from "./model/type";

@@ -1,4 +1,4 @@
-import { categories, type ICategoryCard } from "@/entities/categories";
+import { categories, type ICategoryCard } from "@/entities/settings";
 import { GlassCard } from "@/shared/ui/GlassCard";
 import { CategoryCard } from "@/widgets/CategoryCard";
 import { IconStack2Filled } from "@tabler/icons-react";

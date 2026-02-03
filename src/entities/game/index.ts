@@ -10,7 +10,8 @@ export {
   setTopStreak,
   addScore,
   gameInitialState,
-} from "./model/gameSlice";
+  setRoundStatus,
+} from "./model/store/gameSlice";
 
 export {
   selectGame,
@@ -20,4 +21,8 @@ export {
   selectGameTopScore,
   selectGameStreak,
   selectGameTopStreak,
-} from "./model/gameSelectors";
+  selectGameRoundStatus,
+} from "./model/store/gameSelectors";
+
+export type { IGameEvent } from "./model/type";
+export { allHistoryEvents } from "./model/allHistoryEvents";

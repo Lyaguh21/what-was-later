@@ -7,3 +7,5 @@ export const selectGameTopStreak = (state: RootState) => state.game.topStreak;
 export const selectGameCountGame = (state: RootState) => state.game.countGame;
 export const selectGameIdsQuestions = (state: RootState) =>
   state.game.idsQuestions;
+export const selectGameRoundStatus = (state: RootState) =>
+  state.game.roundStatus;

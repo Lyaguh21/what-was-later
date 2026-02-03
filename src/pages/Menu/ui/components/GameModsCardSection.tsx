@@ -1,9 +1,9 @@
-import { gameMods, type IGameModeCard } from "@/entities/gameMods";
+import { gameMods, type IGameModeCard } from "@/entities/settings";
 import { GlassCard } from "@/shared/ui/GlassCard";
 import { GameModeCard } from "@/widgets/GameModeCard";
 import { IconDeviceGamepad2 } from "@tabler/icons-react";
 
-export default function GameModsCardSection() {
+function GameModsCardSection() {
   return (
     <GlassCard
       initial={{ x: -200, opacity: 0 }}
@@ -36,3 +36,5 @@ export default function GameModsCardSection() {
     </GlassCard>
   );
 }
+
+export default GameModsCardSection;

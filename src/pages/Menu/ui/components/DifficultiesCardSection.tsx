@@ -1,6 +1,6 @@
 import { GlassCard } from "@/shared/ui/GlassCard";
 import { IconBrandSpeedtest } from "@tabler/icons-react";
-import { difficulties, type IDifficultyCard } from "@/entities/difficulties";
+import { difficulties, type IDifficultyCard } from "@/entities/settings";
 import { DifficultyCard } from "@/widgets/DifficultyCard";
 
 export default function DifficultiesCardSection() {

@@ -1,9 +1,6 @@
 import { IconRocket } from "@tabler/icons-react";
 import { Button } from "@/shared/ui/Button";
-import GameModsCardSection from "./components/GameModsCardSection";
-import DifficultiesCardSection from "./components/DifficultiesCardSection";
-import ScoreCardSection from "./components/ScoreCardSection";
-import CategoriesCardSection from "./components/CategoriesCardSection";
+
 import { useAppSelector } from "@/shared/lib";
 import {
   selectCategory,
@@ -13,6 +10,10 @@ import {
 import { useNavigate } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, useEffect } from "react";
+import ScoreCardSection from "./components/ScoreCardSection";
+import CategoriesCardSection from "./components/CategoriesCardSection";
+import GameModsCardSection from "./components/GameModsCardSection";
+import DifficultiesCardSection from "./components/DifficultiesCardSection";
 
 export default function Menu() {
   const navigate = useNavigate();

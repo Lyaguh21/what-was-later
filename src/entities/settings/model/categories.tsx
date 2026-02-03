@@ -6,9 +6,9 @@ import {
   IconGlobe,
   IconPalette,
 } from "@tabler/icons-react";
-import type { CategoryType } from "./type";
+import type { ICategoryCard } from "../../categories/model/type";
 
-export const categories: CategoryType[] = [
+export const categories: ICategoryCard[] = [
   {
     key: "all-history",
     name: "Вся история",
