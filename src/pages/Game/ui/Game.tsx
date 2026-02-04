@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { startGame } from "@/features/game";
 import { useAppDispatch } from "@/shared/lib";
 import ButtonsControl from "./components/ButtonsControl";
+import GameOverModal from "@/widgets/GameOverModal/GameOverModal";
 
 export default function Game() {
   const category = useAppSelector(selectCategory);
@@ -32,6 +33,8 @@ export default function Game() {
       <Header />
       <GameEventCardSection />
       <ButtonsControl />
+
+      <GameOverModal />
     </div>
   );
 }

@@ -4,12 +4,8 @@ import {
   addScore,
   selectGameFirstEvent,
   selectGameRoundStatus,
-  selectGameScore,
   selectGameSecondEvent,
-  selectGameStreak,
   setRoundStatus,
-  setTopScore,
-  setTopStreak,
   type IGameEvent,
 } from "@/entities/game";
 
@@ -17,9 +13,8 @@ import { useAppSelector, useAppDispatch } from "@/shared/lib";
 
 import CorrectIndicator from "./CorrectIndicator";
 import {
-  setVisibleGoToMenuButton,
+  setVisibleGameOverModal,
   setVisibleNextRoundButton,
-  setVisibleRestartButton,
 } from "@/entities/view";
 
 import cn from "classnames";
@@ -29,8 +24,6 @@ export default function GameEventCardSection() {
   const firstEvent = useAppSelector(selectGameFirstEvent);
   const secondEvent = useAppSelector(selectGameSecondEvent);
 
-  const score = useAppSelector(selectGameScore);
-  const streak = useAppSelector(selectGameStreak);
   const dispatch = useAppDispatch();
 
   //* Что происходит при выборе события
@@ -51,11 +44,7 @@ export default function GameEventCardSection() {
       } else {
         //* Если провал
         dispatch(setRoundStatus("failed"));
-
-        dispatch(setVisibleRestartButton(true));
-        dispatch(setVisibleGoToMenuButton(true));
-        dispatch(setTopScore(score));
-        dispatch(setTopStreak(streak));
+        dispatch(setVisibleGameOverModal(true));
       }
     }
   };

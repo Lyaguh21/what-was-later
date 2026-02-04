@@ -45,7 +45,7 @@ export default function Menu() {
 
     const t = setTimeout(() => setShowStartButton(true), 1700);
     return () => clearTimeout(t);
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

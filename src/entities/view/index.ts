@@ -1,11 +1,10 @@
 export {
   viewSlice,
-  setVisibleGoToMenuButton,
   setVisibleNextRoundButton,
-  setVisibleRestartButton,
+  setVisibleGameOverModal,
 } from "./model/store/viewSlice";
 
 export {
-  selectVisibleGoToMenuButton,
   selectVisibleNextRoundButton,
+  selectVisibleGameOverModal,
 } from "./model/store/viewSelectors";
