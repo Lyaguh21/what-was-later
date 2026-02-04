@@ -36,25 +36,27 @@ export default function GameEventCard({
           {event.description}
         </p>
 
-        <AnimatePresence>
-          {roundStatus !== "idle" && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className=""
-            >
-              <div className="bg-linear-to-r from-indigo-500 to-purple-500 border-2 border-white/30 shadow-xl shadow-indigo-600/60 rounded-2xl p-4 text-center">
-                {new Date(event.date).toLocaleDateString("ru-RU", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="h-15">
+          <AnimatePresence>
+            {roundStatus !== "idle" && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className=""
+              >
+                <div className="bg-linear-to-r from-indigo-500 to-purple-500 border-2 border-white/30 shadow-xl shadow-indigo-600/60 rounded-2xl p-4 text-center">
+                  {new Date(event.date).toLocaleDateString("ru-RU", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </motion.div>
   );

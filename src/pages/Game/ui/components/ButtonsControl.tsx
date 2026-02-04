@@ -2,9 +2,7 @@ import { addCountGame, resetGame, setRoundStatus } from "@/entities/game";
 import {
   selectVisibleGoToMenuButton,
   selectVisibleNextRoundButton,
-  setVisibleGoToMenuButton,
   setVisibleNextRoundButton,
-  setVisibleRestartButton,
 } from "@/entities/view";
 import { selectVisibleRestartButton } from "@/entities/view/model/store/viewSelectors";
 import { nextRound, startGame } from "@/features/game";
@@ -45,8 +43,6 @@ export default function ButtonsControl() {
                 onClick={() => {
                   navigation("/");
                   dispatch(resetGame());
-                  dispatch(setVisibleNextRoundButton(false));
-                  dispatch(setVisibleGoToMenuButton(false));
                 }}
                 disabled={!visibleGoToMenuButton}
                 className="aspect-square p-3!"
@@ -73,9 +69,6 @@ export default function ButtonsControl() {
                 onClick={() => {
                   dispatch(addCountGame());
                   dispatch(resetGame());
-                  dispatch(setVisibleGoToMenuButton(false));
-                  dispatch(setVisibleRestartButton(false));
-
                   dispatch(startGame());
                 }}
                 disabled={!visibleRestartButton}

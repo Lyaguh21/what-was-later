@@ -14,7 +14,7 @@ import ScoreCardSection from "./components/ScoreCardSection";
 import CategoriesCardSection from "./components/CategoriesCardSection";
 import GameModsCardSection from "./components/GameModsCardSection";
 import DifficultiesCardSection from "./components/DifficultiesCardSection";
-import { addCountGame } from "@/entities/game";
+import { addCountGame, resetGame } from "@/entities/game";
 
 export default function Menu() {
   const navigate = useNavigate();
@@ -41,6 +41,8 @@ export default function Menu() {
   const [showStartButton, setShowStartButton] = useState(false);
 
   useEffect(() => {
+    dispatch(resetGame());
+
     const t = setTimeout(() => setShowStartButton(true), 1700);
     return () => clearTimeout(t);
   }, []);

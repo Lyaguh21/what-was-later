@@ -1,3 +1,4 @@
+import { gameSlice } from "@/entities/game";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface ViewState {
@@ -29,6 +30,14 @@ export const viewSlice = createSlice({
     setVisibleRestartButton: (state, action) => {
       state.ui.visibleRestartButton = action.payload;
     },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(gameSlice.actions.resetGame, (state) => {
+      state.ui.visibleGoToMenuButton = false;
+      state.ui.visibleNextRoundButton = false;
+      state.ui.visibleRestartButton = false;
+    });
   },
 });
 
