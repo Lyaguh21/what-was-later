@@ -3,12 +3,17 @@ import { useAppSelector } from "@/shared/lib";
 import { GlassMiniCard } from "@/shared/ui/GlassMiniCard";
 import { IconCheck, IconX } from "@tabler/icons-react";
 import { motion } from "motion/react";
+import cn from "classnames";
 
 export default function CorrectIndicator() {
   const roundStatus = useAppSelector(selectGameRoundStatus);
 
   return (
-    <GlassMiniCard className="aspect-square p-3!">
+    <GlassMiniCard
+      className={cn(
+        "aspect-square p-1! md:p-3! col-span-1  items-center justify-center z-10 hidden sm:flex",
+      )}
+    >
       {roundStatus === "succeeded" && (
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}

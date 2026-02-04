@@ -12,7 +12,7 @@ export default function GlassMiniCard({
   return (
     <motion.div
       className={cn(
-        "bg-white/20 backdrop-blur-sm rounded-full px-8 py-3 flex items-center gap-3 ",
+        "bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-8 py-3 flex items-center gap-3 ",
         className,
       )}
     >

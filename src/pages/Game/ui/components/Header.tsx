@@ -17,8 +17,8 @@ export default function Header() {
       >
         Что было позже?
       </motion.h1>
-      
-      <div className="flex items-center justify-center gap-8">
+
+      <div className="flex items-center justify-center gap-2 sm:gap-8">
         <GlassMiniCard
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}

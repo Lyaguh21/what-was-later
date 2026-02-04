@@ -22,6 +22,8 @@ import {
   setVisibleRestartButton,
 } from "@/entities/view";
 
+import cn from "classnames";
+
 export default function GameEventCardSection() {
   const roundStatus = useAppSelector(selectGameRoundStatus);
   const firstEvent = useAppSelector(selectGameFirstEvent);
@@ -64,7 +66,11 @@ export default function GameEventCardSection() {
           <div className="text-white text-2xl font-bold">Loading...</div>
         </div>
       ) : (
-        <div className="flex justify-center items-center w-full gap-12">
+        <div
+          className={cn(
+            "grid grid-cols-6 gap-2 sm:grid-cols-7 w-full items-center justify-items-center",
+          )}
+        >
           <GameEventCard
             initial={{ x: -200, opacity: 0 }}
             animate={{

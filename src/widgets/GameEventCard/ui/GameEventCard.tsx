@@ -1,6 +1,7 @@
 import { selectGameRoundStatus, type IGameEvent } from "@/entities/game";
 import { useAppSelector } from "@/shared/lib";
 import { AnimatePresence, motion, type MotionProps } from "framer-motion";
+import cn from "classnames";
 
 export default function GameEventCard({
   event,
@@ -10,7 +11,7 @@ export default function GameEventCard({
 
   return (
     <motion.div
-      className="bg-white rounded-3xl shadow-2xl overflow-hidden w-[520px] cursor-pointer"
+      className="bg-white rounded-3xl shadow-2xl overflow-hidden lg:w-[520px] h-full col-span-3 cursor-pointer flex flex-col "
       whileHover={{
         scale: 1.05,
         boxShadow: "0 20px 40px rgba(99,102,241,0.15)",
@@ -18,7 +19,7 @@ export default function GameEventCard({
       whileTap={{ scale: 0.98 }}
       {...props}
     >
-      <div className="h-[320px] overflow-hidden relative">
+      <div className="aspect-video lg:h-[320px] overflow-hidden relative">
         <img
           className="w-full h-full object-cover"
           src={event.imageUrl}
@@ -27,9 +28,13 @@ export default function GameEventCard({
         <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
       </div>
 
-      <div className="p-8">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">{event.name}</h3>
-        <p className="text-gray-600 text-lg mb-6">{event.description}</p>
+      <div className="p-2 py-4 md:p-8 flex flex-col justify-between gap-2 md:gap-5 grow">
+        <h3 className="text-xl md:text-2xl font-bold text-gray-800 ">
+          {event.name}
+        </h3>
+        <p className={cn("text-gray-600 text-md md:text-lg ")}>
+          {event.description}
+        </p>
 
         <AnimatePresence>
           {roundStatus !== "idle" && (
