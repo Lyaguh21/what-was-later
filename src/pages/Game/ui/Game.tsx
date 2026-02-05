@@ -9,6 +9,7 @@ import {
 import { Navigate } from "react-router";
 import ButtonsControl from "./components/ButtonsControl";
 import GameOverModal from "@/widgets/GameOverModal/GameOverModal";
+import LoaderAndErrorSection from "./components/LoaderAndErrorSection";
 
 export default function Game() {
   const category = useAppSelector(selectCategory);
@@ -25,6 +26,7 @@ export default function Game() {
       <GameEventCardSection />
       <ButtonsControl />
 
+      <LoaderAndErrorSection />
       <GameOverModal />
     </div>
   );

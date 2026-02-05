@@ -1,50 +1,28 @@
 import {
-  addCountGame,
-  resetGame,
   selectGameScore,
   selectGameStreak,
   selectGameTopScore,
-  setTopScore,
-  setTopStreak,
 } from "@/entities/game";
 import { selectVisibleGameOverModal } from "@/entities/view";
-import { startGame } from "@/features/game";
-import { useAppDispatch, useAppSelector } from "@/shared/lib";
+
+import { useAppSelector } from "@/shared/lib";
 import {
   IconFlameFilled,
-  IconHomeFilled,
-  IconReload,
   IconSkull,
   IconStarFilled,
   IconTrophyFilled,
 } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useNavigate } from "react-router";
+
+import { ButtonMenuControl } from "../ButtonsMenuControl";
 
 export default function GameOverModal() {
-  const navigation = useNavigate();
-  const dispatch = useAppDispatch();
-
   const visibleGameOverModal = useAppSelector(selectVisibleGameOverModal);
 
   const topScore = useAppSelector(selectGameTopScore);
   const score = useAppSelector(selectGameScore);
   const streak = useAppSelector(selectGameStreak);
   const isNewRecord = Boolean(score > topScore);
-
-  const handleRestartGame = () => {
-    dispatch(setTopScore(score));
-    dispatch(setTopStreak(streak));
-    dispatch(addCountGame());
-    dispatch(resetGame());
-    dispatch(startGame());
-  };
-
-  const handleMenuNavigate = () => {
-    dispatch(setTopScore(score));
-    dispatch(setTopStreak(streak));
-    navigation("/");
-  };
 
   return (
     <AnimatePresence>
@@ -116,21 +94,7 @@ export default function GameOverModal() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <button
-                  onClick={handleRestartGame}
-                  className="flex-1 bg-linear-to-r from-indigo-500 to-purple-500 text-white px-6 py-4 rounded-2xl font-bold text-lg hover:from-indigo-600 hover:to-purple-600 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  <IconReload />
-                  Повторить
-                </button>
-                <button
-                  onClick={handleMenuNavigate}
-                  className="flex-1 bg-gray-100 text-gray-700 px-6 py-4 rounded-2xl font-bold text-lg hover:bg-gray-200 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  <IconHomeFilled color="#374151" />В меню
-                </button>
-              </div>
+              <ButtonMenuControl />
             </div>
           </motion.div>
         </motion.div>

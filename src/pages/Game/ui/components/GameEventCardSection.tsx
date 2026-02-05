@@ -50,11 +50,7 @@ export default function GameEventCardSection() {
   };
   return (
     <>
-      {!firstEvent || !secondEvent ? (
-        <div className="w-full h-full flex justify-center items-center">
-          <div className="text-white text-2xl font-bold">Loading...</div>
-        </div>
-      ) : (
+      {firstEvent && secondEvent && (
         <div
           className={cn(
             "grid grid-cols-6 gap-2 sm:grid-cols-7 w-full items-center justify-items-center",

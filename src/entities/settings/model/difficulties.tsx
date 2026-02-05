@@ -16,8 +16,8 @@ export const difficulties: IDifficultyCard[] = [
     colorShadow: "shadow-green-600/40",
     tag: "±50+ лет",
 
-    windowStart: 60,
-    windowEnd: 350,
+    windowStart: 80,
+    windowEnd: 300,
   },
   {
     key: "medium",
