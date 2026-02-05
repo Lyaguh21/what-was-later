@@ -41,6 +41,8 @@ export const pickNextEvent = createAsyncThunk<
     console.log("posById is missing in state.game");
     return undefined;
   }
+  const usedIds = state.game.usedIds ?? [];
+  const usedSet = new Set<number>(usedIds);
 
   // buckets by difficulty rank (0: easy .. 3: insane)
   const buckets: IGameEvent[][] = [[], [], [], []];
@@ -63,6 +65,7 @@ export const pickNextEvent = createAsyncThunk<
           if (
             diff >= windowStart &&
             posById[e.id] !== -1 &&
+            !usedSet.has(e.id) &&
             isAllowedEventDifficulty(e.difficulty, selectedDifficulty)
           ) {
             buckets[DIFF_RANK[e.difficulty]].push(e);
@@ -82,6 +85,7 @@ export const pickNextEvent = createAsyncThunk<
           if (
             diff >= windowStart &&
             posById[e.id] !== -1 &&
+            !usedSet.has(e.id) &&
             isAllowedEventDifficulty(e.difficulty, selectedDifficulty)
           ) {
             buckets[DIFF_RANK[e.difficulty]].push(e);
@@ -111,6 +115,7 @@ export const pickNextEvent = createAsyncThunk<
       const e = events[i];
       if (
         posById[e.id] !== -1 &&
+        !usedSet.has(e.id) &&
         isAllowedEventDifficulty(e.difficulty, selectedDifficulty)
       ) {
         fallback.push(e);
@@ -122,6 +127,7 @@ export const pickNextEvent = createAsyncThunk<
   }
 
   //? Если брать нечего, то конец игры
+  //todo Добавить модалку с концом игры
   if (!pick) {
     console.log("endGame");
     return undefined;
