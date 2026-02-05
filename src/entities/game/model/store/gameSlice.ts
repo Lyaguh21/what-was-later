@@ -103,6 +103,7 @@ export const gameSlice = createSlice({
     resetGame: (state) => {
       state.usedIds = [];
       state.notUsedIds = [...Array(lengthHistoryEvents).keys()];
+      state.posById = [...Array(lengthHistoryEvents).keys()];
       state.score = 0;
       state.streak = 0;
       state.roundStatus = "idle";

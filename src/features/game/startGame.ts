@@ -13,14 +13,13 @@ export const startGame = createAsyncThunk<void, void, { state: RootState }>(
     const state = getState();
     const difficulty = state.settings.selectDifficulty;
 
+    //* Первые события фильтруются по сложности
     //todo Добавить проверку на категорию событий
     const historyEvents = allHistoryEvents.filter(
       (e) => e.difficulty === difficulty,
     );
 
     //* Случайно выбираем первое событиe
-
-    //todo сделать проверку на сложность
     const first =
       historyEvents[Math.floor(Math.random() * historyEvents.length)];
 

@@ -15,6 +15,7 @@ import CategoriesCardSection from "./components/CategoriesCardSection";
 import GameModsCardSection from "./components/GameModsCardSection";
 import DifficultiesCardSection from "./components/DifficultiesCardSection";
 import { addCountGame, resetGame } from "@/entities/game";
+import { startGame } from "@/features/game";
 
 export default function Menu() {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ export default function Menu() {
   const navigateToGame = () => {
     setAnimated(true);
     setShowStartButton(false);
+    dispatch(startGame());
     setTimeout(() => {
       navigate("/play");
       dispatch(addCountGame());
