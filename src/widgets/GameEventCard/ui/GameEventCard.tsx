@@ -2,6 +2,7 @@ import { selectGameRoundStatus, type IGameEvent } from "@/entities/game";
 import { useAppSelector } from "@/shared/lib";
 import { AnimatePresence, motion, type MotionProps } from "framer-motion";
 import cn from "classnames";
+import { CorrectedDate } from "@/shared/helpers";
 
 export default function GameEventCard({
   event,
@@ -46,12 +47,8 @@ export default function GameEventCard({
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className=""
               >
-                <div className="bg-linear-to-r from-indigo-500 to-purple-500 border-2 border-white/30 shadow-xl shadow-indigo-600/60 rounded-2xl p-4 text-center">
-                  {new Date(event.date).toLocaleDateString("ru-RU", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                <div className="bg-linear-to-r from-indigo-500 to-purple-500 border-2 border-white/30 shadow-xl shadow-indigo-600/60 rounded-2xl p-4 text-center text-white text-xl font-bold">
+                  {CorrectedDate(event.date)}
                 </div>
               </motion.div>
             )}

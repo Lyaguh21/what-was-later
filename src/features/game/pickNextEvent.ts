@@ -1,65 +1,100 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { allHistoryEvents, type IGameEvent } from "@/entities/game";
-import { setUsedIds, setSecondEvent } from "@/entities/game";
-import { difficulties } from "@/entities/settings";
+import { allHistoryEvents, pushUsedId, type IGameEvent } from "@/entities/game";
+import { setSecondEvent } from "@/entities/game";
+import { difficulties, type EventDifficulty } from "@/entities/settings";
+import {
+  isAllowedEventDifficulty,
+  parseYear,
+} from "./model/game-events-sorted";
+import { delNotUsedId } from "@/entities/game";
 
-type Arg = { firstEventId: number; addFirstToUsed?: boolean };
-
-function parseYear(date: string) {
-  const yearStr = date.slice(0, 4);
-  return Number(yearStr);
-}
+type Arg = { firstEventId: number };
 
 export const pickNextEvent = createAsyncThunk<
   IGameEvent | undefined,
   Arg,
   { state: RootState }
->("game/pickNextEvent", async (arg, { getState, dispatch }) => {
-  const { firstEventId, addFirstToUsed } = arg;
+>("game/pickNextEvent", async ({ firstEventId }, { getState, dispatch }) => {
   const state = getState();
-  const usedIds = state.game.usedIds || [];
-  const selectedDifficulty = state.settings.selectDifficulty;
+  const selectedDifficulty = state.settings.selectDifficulty as EventDifficulty;
 
-  const windowStart = difficulties.find(
-    (el) => el.key === selectedDifficulty,
-  )?.windowStart;
-  const windowEnd = difficulties.find(
-    (el) => el.key === selectedDifficulty,
-  )?.windowEnd;
+  const diffCfg = difficulties.find((el) => el.key === selectedDifficulty);
+  const windowStart = diffCfg?.windowStart ?? 20;
+  const windowEnd = diffCfg?.windowEnd ?? 100;
 
-  const first = allHistoryEvents.find((e) => e.id === firstEventId);
+  const events = allHistoryEvents;
+  const first = events[firstEventId];
   if (!first) return undefined;
 
   const firstYear = parseYear(first.date);
+  if (Number.isNaN(firstYear)) return undefined;
 
-  const withinWindow = allHistoryEvents.filter((e) => {
-    if (e.id === firstEventId) return false;
-    if (usedIds.includes(e.id)) return false;
-    const y = parseYear(e.date);
-    const diff = Math.abs(y - firstYear);
-    return diff >= windowStart && diff <= windowEnd; //*Window of 20 to 300 years
-  });
+  const posById = state.game.posById;
+  if (!posById) {
+    console.log("posById is missing in state.game");
+    return undefined;
+  }
 
-  let candidates = withinWindow;
+  const candidates: IGameEvent[] = [];
+
+  const n = events.length;
+  let left = firstEventId - 1;
+  let right = firstEventId + 1;
+
+  let leftDone = false;
+  let rightDone = false;
+
+  while (!leftDone || !rightDone) {
+    if (!leftDone) {
+      if (left < 0) leftDone = true;
+      else {
+        const e = events[left];
+        const diff = Math.abs(parseYear(e.date) - firstYear);
+        if (diff > windowEnd) leftDone = true;
+        else {
+          if (
+            diff >= windowStart &&
+            posById[e.id] !== -1 &&
+            isAllowedEventDifficulty(e.difficulty, selectedDifficulty)
+          ) {
+            candidates.push(e);
+          }
+          left--;
+        }
+      }
+    }
+
+    if (!rightDone) {
+      if (right >= n) rightDone = true;
+      else {
+        const e = events[right];
+        const diff = Math.abs(parseYear(e.date) - firstYear);
+        if (diff > windowEnd) rightDone = true;
+        else {
+          if (
+            diff >= windowStart &&
+            posById[e.id] !== -1 &&
+            isAllowedEventDifficulty(e.difficulty, selectedDifficulty)
+          ) {
+            candidates.push(e);
+          }
+          right++;
+        }
+      }
+    }
+  }
+
+  //todo добавить конец игры
   if (candidates.length === 0) {
-    candidates = allHistoryEvents.filter(
-      (e) => e.id !== firstEventId && !usedIds.includes(e.id),
-    );
-  }
-  if (candidates.length === 0) {
-    candidates = allHistoryEvents.filter((e) => e.id !== firstEventId);
+    console.log("Событий нет, игра закончена");
+    return undefined;
   }
 
-  const pick = candidates[Math.floor(Math.random() * candidates.length)];
+  const pick = candidates[(Math.random() * candidates.length) | 0];
 
-  const newUsed = [...usedIds];
-  if (!newUsed.includes(pick.id)) newUsed.push(pick.id);
-  if (addFirstToUsed) {
-    if (!newUsed.includes(firstEventId)) newUsed.push(firstEventId);
-  }
-
-  dispatch(setUsedIds(newUsed));
   dispatch(setSecondEvent(pick));
+  dispatch(delNotUsedId(pick.id));
+  dispatch(pushUsedId(pick.id));
 
   return pick;
 });

@@ -11,7 +11,7 @@ export default function CorrectIndicator() {
   return (
     <GlassMiniCard
       className={cn(
-        "aspect-square p-1! md:p-3! col-span-1  items-center justify-center z-10 hidden sm:flex",
+        "aspect-square p-1! md:p-3! col-span-1  items-center justify-center z-10 hidden sm:flex border-4 border-white/45",
       )}
     >
       {roundStatus === "succeeded" && (

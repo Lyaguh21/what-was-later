@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { IGameEvent } from "../type";
+import { allHistoryEvents } from "../allHistoryEvents";
 
 interface initialGameStateType {
   score: number;
@@ -8,16 +9,21 @@ interface initialGameStateType {
   topStreak: number;
   countGame: number;
   usedIds: number[];
+  notUsedIds: number[];
+  posById: number[];
   roundStatus: "idle" | "animating" | "succeeded" | "failed";
   firstEvent: IGameEvent | null;
   secondEvent: IGameEvent | null;
 }
 
+const lengthHistoryEvents = allHistoryEvents.length;
+
 export const gameInitialState: initialGameStateType = {
   score: 0,
   streak: 0,
-  usedIds: [],
-
+  usedIds: [], //* id событий которые использовались
+  notUsedIds: [...Array(lengthHistoryEvents).keys()], //* id событий которые остались
+  posById: [...Array(lengthHistoryEvents).keys()], //* Вспомогательный массив для позиционирования
   topScore: 0,
   countGame: 0,
   topStreak: 0,
@@ -62,6 +68,27 @@ export const gameSlice = createSlice({
       state.usedIds = action.payload;
     },
 
+    pushUsedId: (state, action: PayloadAction<number>) => {
+      state.usedIds.push(action.payload);
+    },
+
+    delNotUsedId: (state, action: PayloadAction<number>) => {
+      const id = action.payload;
+      const idx = state.posById[id];
+      if (idx === -1 || idx === undefined) return;
+
+      const lastIdx = state.notUsedIds.length - 1;
+      const lastId = state.notUsedIds[lastIdx];
+
+      // swap
+      state.notUsedIds[idx] = lastId;
+      state.posById[lastId] = idx;
+
+      // pop
+      state.notUsedIds.pop();
+      state.posById[id] = -1;
+    },
+
     setRoundStatus: (state, action) => {
       state.roundStatus = action.payload;
     },
@@ -69,13 +96,13 @@ export const gameSlice = createSlice({
     setFirstEvent: (state, action) => {
       state.firstEvent = action.payload;
     },
-
     setSecondEvent: (state, action) => {
       state.secondEvent = action.payload;
     },
 
     resetGame: (state) => {
       state.usedIds = [];
+      state.notUsedIds = [...Array(lengthHistoryEvents).keys()];
       state.score = 0;
       state.streak = 0;
       state.roundStatus = "idle";
@@ -98,5 +125,7 @@ export const {
   setRoundStatus,
   setFirstEvent,
   setSecondEvent,
+  delNotUsedId,
+  pushUsedId,
 } = gameSlice.actions;
 export default gameSlice.reducer;

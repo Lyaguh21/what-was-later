@@ -13,6 +13,8 @@ export {
   addScore,
   gameInitialState,
   setRoundStatus,
+  delNotUsedId,
+  pushUsedId,
 } from "./model/store/gameSlice";
 
 export {

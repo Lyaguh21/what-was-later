@@ -16,8 +16,8 @@ export const difficulties: IDifficultyCard[] = [
     colorShadow: "shadow-green-600/40",
     tag: "±50+ лет",
 
-    windowStart: 50,
-    windowEnd: 100,
+    windowStart: 60,
+    windowEnd: 350,
   },
   {
     key: "medium",
@@ -28,8 +28,8 @@ export const difficulties: IDifficultyCard[] = [
     colorShadow: "shadow-cyan-600/40",
     tag: "±20-50 лет",
 
-    windowStart: 20,
-    windowEnd: 50,
+    windowStart: 35,
+    windowEnd: 220,
   },
   {
     key: "hard",
@@ -40,8 +40,8 @@ export const difficulties: IDifficultyCard[] = [
     colorShadow: "shadow-orange-600/40",
     tag: "±5-20 лет",
 
-    windowStart: 5,
-    windowEnd: 20,
+    windowStart: 12,
+    windowEnd: 90,
   },
   {
     key: "insane",
@@ -52,7 +52,7 @@ export const difficulties: IDifficultyCard[] = [
     colorShadow: "shadow-fuchsia-600/50",
     tag: "±1-5 лет",
 
-    windowStart: 1,
-    windowEnd: 5,
+    windowStart: 5,
+    windowEnd: 40,
   },
 ];

@@ -10,8 +10,10 @@ export type ICategoryCard = Pick<ICategory, "key" | "name"> & {
 };
 
 //? Сложность
+export type EventDifficulty = "easy" | "medium" | "hard" | "insane";
+
 export interface IDifficulty {
-  key: string;
+  key: EventDifficulty;
   name: string;
 }
 

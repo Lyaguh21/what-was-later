@@ -5,5 +5,5 @@ export interface IGameEvent {
   description: string;
   imageUrl: string;
   linkOnWiki: string;
-  // difficulty:"easy" | "medium" | "hard" | "insane"
+  difficulty?: "easy" | "medium" | "hard" | "insane";
 }

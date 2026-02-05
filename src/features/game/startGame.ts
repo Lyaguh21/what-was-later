@@ -1,38 +1,33 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { allHistoryEvents } from "@/entities/game";
-import { setFirstEvent, setUsedIds } from "@/entities/game";
+import { setFirstEvent } from "@/entities/game";
 import { pickNextEvent } from "./pickNextEvent";
+import {
+  delNotUsedId,
+  pushUsedId,
+} from "@/entities/game/model/store/gameSlice";
 
 export const startGame = createAsyncThunk<void, void, { state: RootState }>(
   "game/startGame",
   async (_, { dispatch, getState }) => {
     const state = getState();
-    const used = state.game.usedIds || [];
+    const difficulty = state.settings.selectDifficulty;
 
-    // pick random first event not used yet and not later than year 1100
-    const candidates = allHistoryEvents.filter(
-      (e) => !used.includes(e.id) && Number(e.date.slice(0, 4)) <= 1100,
+    //todo Добавить проверку на категорию событий
+    const historyEvents = allHistoryEvents.filter(
+      (e) => e.difficulty === difficulty,
     );
 
-    // fallback: try any event with year <= 1100 (even if used), otherwise any event
-    const fallbackPool = allHistoryEvents.filter(
-      (e) => Number(e.date.slice(0, 4)) <= 1100,
-    );
+    //* Случайно выбираем первое событиe
 
+    //todo сделать проверку на сложность
     const first =
-      candidates.length > 0
-        ? candidates[Math.floor(Math.random() * candidates.length)]
-        : fallbackPool.length > 0
-          ? fallbackPool[Math.floor(Math.random() * fallbackPool.length)]
-          : allHistoryEvents[
-              Math.floor(Math.random() * allHistoryEvents.length)
-            ];
+      historyEvents[Math.floor(Math.random() * historyEvents.length)];
 
     dispatch(setFirstEvent(first));
-    // add first id to used (so it won't be reused immediately)
-    dispatch(setUsedIds([...used, first.id]));
+    dispatch(pushUsedId(first.id));
+    dispatch(delNotUsedId(first.id));
 
-    // pick second event using the reusable thunk
     await dispatch(pickNextEvent({ firstEventId: first.id }));
   },
 );
