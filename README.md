@@ -30,8 +30,6 @@
   <img src="screens/MobileMenu.png" width="300px" />
   
 </p>
-![Мобильное меню](screens/MobileMain.png)
-![Мобильное меню](screens/MobileMenu.png)
 
 ## 🚀 Установка и запуск
 
