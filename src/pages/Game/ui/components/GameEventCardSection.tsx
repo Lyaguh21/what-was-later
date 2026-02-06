@@ -1,7 +1,6 @@
 import GameEventCard from "@/widgets/game-events-card/ui/GameEventCard";
 import {
   addOneToStreak,
-  addScore,
   selectGameFirstEvent,
   selectGameRoundStatus,
   selectGameSecondEvent,
@@ -18,6 +17,7 @@ import {
 } from "@/entities/view";
 
 import cn from "classnames";
+import { CalculatedAddScore } from "@/features/game";
 
 export default function GameEventCardSection() {
   const roundStatus = useAppSelector(selectGameRoundStatus);
@@ -38,7 +38,7 @@ export default function GameEventCardSection() {
       ) {
         //* Если все успешно
         dispatch(setRoundStatus("succeeded"));
-        dispatch(addScore(5));
+        dispatch(CalculatedAddScore());
         dispatch(addOneToStreak());
         dispatch(setVisibleNextRoundButton(true));
       } else {

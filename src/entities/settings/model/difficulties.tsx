@@ -14,10 +14,10 @@ export const difficulties: IDifficultyCard[] = [
     colorCard:
       "bg-gradient-to-br from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600",
     colorShadow: "shadow-green-600/40",
-    tag: "±50+ лет",
 
     windowStart: 80,
     windowEnd: 300,
+    scoreAdd: 5,
   },
   {
     key: "medium",
@@ -26,10 +26,10 @@ export const difficulties: IDifficultyCard[] = [
     colorCard:
       "bg-gradient-to-br from-blue-400 to-cyan-500 hover:from-blue-500 hover:to-cyan-600",
     colorShadow: "shadow-cyan-600/40",
-    tag: "±20-50 лет",
 
-    windowStart: 35,
-    windowEnd: 220,
+    windowStart: 50,
+    windowEnd: 200,
+    scoreAdd: 10,
   },
   {
     key: "hard",
@@ -38,10 +38,10 @@ export const difficulties: IDifficultyCard[] = [
     colorCard:
       "bg-gradient-to-br from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600",
     colorShadow: "shadow-orange-600/40",
-    tag: "±5-20 лет",
 
-    windowStart: 12,
+    windowStart: 20,
     windowEnd: 90,
+    scoreAdd: 20,
   },
   {
     key: "insane",
@@ -50,9 +50,9 @@ export const difficulties: IDifficultyCard[] = [
     colorCard:
       "bg-gradient-to-br from-purple-500 to-fuchsia-600 hover:from-purple-600 hover:to-fuchsia-700",
     colorShadow: "shadow-fuchsia-600/50",
-    tag: "±1-5 лет",
 
     windowStart: 5,
-    windowEnd: 40,
+    windowEnd: 50,
+    scoreAdd: 40,
   },
 ];
