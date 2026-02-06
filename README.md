@@ -1,73 +1,94 @@
-# React + TypeScript + Vite
+# Что было позже? 🕰️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Игра на знание исторических событий в хронологическом порядке. Проверь свои знания в истории и узнай, что произошло раньше, а что позже!
 
-Currently, two official plugins are available:
+## 🎮 Описание игры
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"Что было позже?" - это увлекательная викторина, которая проверит ваши знания истории. В игре представлены значимые исторические события от древности до наших дней. Ваша задача - определить, какое из двух событий произошло позже. Игра реализована полностью на фронтенде.
 
-## React Compiler
+## 📚 Исторические события
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+В игре представлено более 100 исторических событий, охватывающих:
 
-## Expanding the ESLint configuration
+- Древний мир (Месопотамия, Египет, Греция, Рим)
+- Средневековье (Рыцари, Крестовые походы, Монголы)
+- Новое время (Реформация, Просвещение, Колонизация)
+- Новейшее время (Мировые войны, Космическая эра, Интернет)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Desktop версия
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Главное меню](screens/MenuScreen.png)
+![Информация о сложности](screens/ViewDifficulty.png)
+![Игровой процесс](screens/MainScreen.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Мобильная версия
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+![Мобильное меню](screens/MobileMain.png)
+![Мобильное меню](screens/MobileMenu.png)
+
+## 🚀 Установка и запуск
+
+### Требования
+
+- Node.js (версия 14 или выше)
+- npm или yarn
+
+## 🛠️ Технологии
+
+- **React 19**
+- **Redux Toolkit**
+- **React Router v7**
+- **Tailwind CSS v4**
+- **TypeScript**
+- **Vite**
+- **Motion**
+- **Tabler Icons**
+
+## 📊 Структура проекта
+
+Проект следует архитектуре Feature-Sliced Design:
+
+```
+src/
+├── app/
+├── entities/
+├── features/
+├── pages/
+├── shared/
+└── widgets/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Установка
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Клонируйте репозиторий:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/Lyaguh21/what-was-later
+cd what-was-later
+```
+
+2. Установите зависимости:
+
+```bash
+npm install
+# или
+yarn install
+```
+
+### Запуск
+
+Для запуска в режиме разработки:
+
+```bash
+npm run dev
+# или
+yarn dev
+```
+
+Для сборки проекта:
+
+```bash
+npm run build
+# или
+yarn build
 ```

@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Путь к файлу, где лежит массив (поправь под себя)
+// Путь к файлу, где лежит массив
 const INPUT_TS_PATH = path.resolve(
   __dirname,
   "../src/entities/game/model/allHistoryEventsList.tsx",
@@ -27,11 +27,6 @@ function extractWikiTitle(url) {
   return decodeURIComponent(parts[1]);
 }
 
-/**
- * MediaWiki API для pageimages:
- * - pithumbsize=1600 даст нормальную большую превьюшку
- * - origin=* нужен для CORS в браузере, но в node можно не указывать; оставим, не мешает
- */
 async function fetchWikiImageUrl(lang, title) {
   const api = `https://${lang}.wikipedia.org/w/api.php`;
   const params = new URLSearchParams({
@@ -56,18 +51,10 @@ async function fetchWikiImageUrl(lang, title) {
   return page?.thumbnail?.source ?? null;
 }
 
-/**
- * Простая "вежливая" задержка, чтобы не долбить API слишком быстро.
- */
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-/**
- * Очень простой парсер, который достает массив из ts-файла.
- * Ожидается экспорт вида: export const allHistoryEvents: IGameEvent[] = [ ... ];
- * Если у тебя формат другой — скажи, адаптирую.
- */
 function extractArrayLiteral(tsText) {
   const start = tsText.indexOf("[");
   const end = tsText.lastIndexOf("]");
@@ -80,8 +67,6 @@ async function main() {
   const tsText = await fs.readFile(INPUT_TS_PATH, "utf8");
   const arrLiteral = extractArrayLiteral(tsText);
 
-  // ВАЖНО: это безопасно только для своих локальных файлов.
-  // Мы выполняем массив как JS-выражение.
   const events = Function(`"use strict"; return (${arrLiteral});`)();
 
   for (let i = 0; i < events.length; i++) {
@@ -94,7 +79,6 @@ async function main() {
       continue;
     }
 
-    // определяем язык вики по ссылке (ru/en)
     const lang = new URL(ev.linkOnWiki).hostname.split(".")[0] || "ru";
 
     const img = await fetchWikiImageUrl(lang, title);
@@ -105,7 +89,6 @@ async function main() {
       console.warn(`NO IMAGE id=${ev.id}: ${ev.linkOnWiki}`);
     }
 
-    // небольшая пауза
     await sleep(150);
   }
 

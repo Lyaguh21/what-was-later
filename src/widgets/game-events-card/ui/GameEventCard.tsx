@@ -29,7 +29,7 @@ export default function GameEventCard({
         <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex justify-center items-center">
           <h2 className="text-2xl font-extrabold text-gray-600 text-center ">
             {event.name}
-            {event.date}
+            {/* {event.date} */}
           </h2>
         </div>
       </div>
