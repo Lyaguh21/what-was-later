@@ -1,1 +1,1 @@
-export { CorrectedDate } from "./CorrectedDate";
+export { CorrectedDate } from "./correctedDate";

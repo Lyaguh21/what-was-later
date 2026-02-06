@@ -1,4 +1,4 @@
-import GameEventCard from "@/widgets/GameEventCard/ui/GameEventCard";
+import GameEventCard from "@/widgets/game-events-card/ui/GameEventsCard";
 import {
   addOneToStreak,
   addScore,

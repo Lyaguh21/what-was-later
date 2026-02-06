@@ -6,7 +6,7 @@ import {
 
 import { nextRound } from "@/features/game";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
-import { Button } from "@/shared/ui/Button";
+import { Button } from "@/shared/ui/button";
 import { IconChevronRight } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
 

@@ -4,7 +4,7 @@ import {
   selectGameUsedIds,
 } from "@/entities/game";
 import { useAppSelector } from "@/shared/lib";
-import { ButtonMenuControl } from "@/widgets/ButtonsMenuControl";
+import { ButtonMenuControl } from "@/widgets/buttons-menu-control";
 
 export default function LoaderAndErrorSection() {
   const useIds = useAppSelector(selectGameUsedIds);

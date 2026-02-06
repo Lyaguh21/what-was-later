@@ -6,7 +6,7 @@ import {
   selectGameUsedIds,
 } from "@/entities/game";
 import { useAppSelector } from "@/shared/lib";
-import { GlassMiniCard } from "@/shared/ui/GlassMiniCard";
+import { GlassMiniCard } from "@/shared/ui/glass-mini-card";
 import { IconFlameFilled, IconStarFilled } from "@tabler/icons-react";
 import { motion } from "motion/react";
 

@@ -1,6 +1,6 @@
 import { gameMods, type IGameModeCard } from "@/entities/settings";
-import { GlassCard } from "@/shared/ui/GlassCard";
-import { GameModeCard } from "@/widgets/GameModeCard";
+import { GlassCard } from "@/shared/ui/glass-card";
+import { GameModeCard } from "@/widgets/game-mod-card";
 import { IconDeviceGamepad2 } from "@tabler/icons-react";
 
 function GameModsCardSection() {

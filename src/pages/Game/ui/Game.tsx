@@ -8,7 +8,7 @@ import {
 } from "@/entities/settings";
 import { Navigate } from "react-router";
 import ButtonsControl from "./components/ButtonsControl";
-import GameOverModal from "@/widgets/GameOverModal/GameOverModal";
+import GameOverModal from "@/widgets/game-over-modal/GameOverModal";
 import LoaderAndErrorSection from "./components/LoaderAndErrorSection";
 
 export default function Game() {

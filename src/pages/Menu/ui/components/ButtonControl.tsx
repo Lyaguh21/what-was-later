@@ -1,4 +1,4 @@
-import { Button } from "@/shared/ui/Button";
+import { Button } from "@/shared/ui/button";
 import { IconRocket } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
 

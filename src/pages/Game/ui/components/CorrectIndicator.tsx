@@ -1,6 +1,6 @@
 import { selectGameRoundStatus } from "@/entities/game";
 import { useAppSelector } from "@/shared/lib";
-import { GlassMiniCard } from "@/shared/ui/GlassMiniCard";
+import { GlassMiniCard } from "@/shared/ui/glass-mini-card";
 import { IconCheck, IconX } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import cn from "classnames";

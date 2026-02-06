@@ -14,7 +14,7 @@ import {
 } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
 
-import { ButtonMenuControl } from "../ButtonsMenuControl";
+import { ButtonMenuControl } from "../buttons-menu-control";
 
 export default function GameOverModal() {
   const visibleGameOverModal = useAppSelector(selectVisibleGameOverModal);

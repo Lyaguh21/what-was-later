@@ -1,6 +1,6 @@
 import { categories, type ICategoryCard } from "@/entities/settings";
-import { GlassCard } from "@/shared/ui/GlassCard";
-import { CategoryCard } from "@/widgets/CategoryCard";
+import { GlassCard } from "@/shared/ui/glass-card";
+import { CategoryCard } from "@/widgets/category-card";
 import { IconStack2Filled } from "@tabler/icons-react";
 
 export default function CategoriesCardSection() {

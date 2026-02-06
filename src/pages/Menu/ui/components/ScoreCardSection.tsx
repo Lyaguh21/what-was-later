@@ -4,7 +4,7 @@ import {
   selectGameTopStreak,
 } from "@/entities/game";
 import { useAppSelector } from "@/shared/lib";
-import { GlassCard } from "@/shared/ui/GlassCard";
+import { GlassCard } from "@/shared/ui/glass-card";
 import { IconTrophyFilled } from "@tabler/icons-react";
 
 export default function ScoreCardSection() {

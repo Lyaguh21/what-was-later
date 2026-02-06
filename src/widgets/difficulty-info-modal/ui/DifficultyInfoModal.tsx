@@ -11,7 +11,7 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { selectDifficulty } from "@/entities/settings";
-import { DifficultyInfo } from "../model/difficulty-info";
+import { DifficultyInfo } from "../model/constants";
 import cn from "classnames";
 
 export default function DifficultyInfoModal() {
