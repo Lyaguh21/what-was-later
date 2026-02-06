@@ -7,6 +7,7 @@ import {
   parseYear,
 } from "./model/game-events-sorted";
 import { delNotUsedId } from "@/entities/game";
+import { setVisibleGameOverModal } from "@/entities/view";
 
 type Arg = { firstEventId: number };
 
@@ -127,9 +128,8 @@ export const pickNextEvent = createAsyncThunk<
   }
 
   //? Если брать нечего, то конец игры
-  //todo Добавить модалку с концом игры
   if (!pick) {
-    console.log("endGame");
+    dispatch(setVisibleGameOverModal(true));
     return undefined;
   }
 

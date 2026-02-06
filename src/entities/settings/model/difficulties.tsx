@@ -53,6 +53,6 @@ export const difficulties: IDifficultyCard[] = [
 
     windowStart: 5,
     windowEnd: 50,
-    scoreAdd: 40,
+    scoreAdd: 30,
   },
 ];
