@@ -16,13 +16,20 @@
 - Новейшее время (Мировые войны, Космическая эра, Интернет)
 
 ### Desktop версия
+<p>
+  <img src="screens/MenuScreen.png"  />
+  <img src="screens/MainScreen.png"  />
+  <img src="screens/ViewDifficulty.png"  />
 
-![Главное меню](screens/MenuScreen.png)
-![Информация о сложности](screens/ViewDifficulty.png)
-![Игровой процесс](screens/MainScreen.png)
+</p>
 
 ### Мобильная версия
 
+<p>
+  <img src="screens/MobileMain.png" width="300px" />
+  <img src="screens/MobileMenu.png" width="300px" />
+  
+</p>
 ![Мобильное меню](screens/MobileMain.png)
 ![Мобильное меню](screens/MobileMenu.png)
 
