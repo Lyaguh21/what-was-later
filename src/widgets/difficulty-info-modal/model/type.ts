@@ -5,7 +5,6 @@ export interface IDifficultyInfoModal {
   difficultyName: string;
   description: string;
 
-  windowTitle: string;
   difficultyEventTitle: string;
   recommendationTitle: string;
 
@@ -13,4 +12,8 @@ export interface IDifficultyInfoModal {
   secondCoupleEvents: string;
 
   color: string;
+
+  windowStart: number;
+  windowEnd: number;
+  scoreAdd: number;
 }

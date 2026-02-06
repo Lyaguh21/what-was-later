@@ -17,9 +17,11 @@ export default function DifficultyCard({
   const selectedDifficulty = useAppSelector(selectDifficulty);
 
   return (
-    <button
+    <div
+      role="button"
+      tabIndex={0}
       className={cn(
-        "w-full grow items-center rounded-2xl p-2 transition-all duration-300 border-2 border-transparent hover:border-white/40 hover:scale-105 flex justify-between ",
+        "w-full grow items-center rounded-2xl p-2 transition-all duration-300 border-2 border-transparent hover:border-white/40 hover:scale-105 flex justify-between cursor-pointer",
         difficulty.colorCard,
         {
           [`border-2 border-white/60 scale-[104%] md:scale-110 shadow-xl ${difficulty.colorShadow}`]:
@@ -27,6 +29,12 @@ export default function DifficultyCard({
         },
       )}
       onClick={() => dispatch(setDifficulty(difficulty.key))}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          dispatch(setDifficulty(difficulty.key));
+        }
+      }}
     >
       <div className="flex gap-3 items-center">
         <div className="*:size-10 *:stroke-white">{difficulty.icon}</div>
@@ -40,6 +48,6 @@ export default function DifficultyCard({
       >
         <IconInfoCircle size={32} color="white" />
       </button>
-    </button>
+    </div>
   );
 }

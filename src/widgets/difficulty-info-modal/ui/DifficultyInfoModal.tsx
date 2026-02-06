@@ -8,6 +8,7 @@ import {
   IconClock,
   IconMessageFilled,
   IconTarget,
+  IconTrophyFilled,
   IconX,
 } from "@tabler/icons-react";
 import { selectDifficulty } from "@/entities/settings";
@@ -76,10 +77,11 @@ export default function DifficultyInfoModal() {
                         difficultyInfo?.color,
                       )}
                     >
-                      <IconClock color="white"/>
+                      <IconClock color="white" />
                     </div>
                     <p className="text-gray-700 mt-1.5">
-                      {difficultyInfo?.windowTitle}
+                      Разница между событиями: {difficultyInfo?.windowStart} -{" "}
+                      {difficultyInfo?.windowEnd} лет
                     </p>
                   </div>
                   <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl">
@@ -89,7 +91,7 @@ export default function DifficultyInfoModal() {
                         difficultyInfo?.color,
                       )}
                     >
-                      <IconTarget color="white"/>
+                      <IconTarget color="white" />
                     </div>
                     <p className="text-gray-700 mt-1.5">
                       {difficultyInfo?.difficultyEventTitle}
@@ -102,10 +104,23 @@ export default function DifficultyInfoModal() {
                         difficultyInfo?.color,
                       )}
                     >
-                      <IconMessageFilled color="white"/>
+                      <IconMessageFilled color="white" />
                     </div>
                     <p className="text-gray-700 mt-1.5">
                       {difficultyInfo?.recommendationTitle}
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl">
+                    <div
+                      className={cn(
+                        "w-10 h-10 rounded-lg flex items-center justify-center shrink-0",
+                        difficultyInfo?.color,
+                      )}
+                    >
+                      <IconTrophyFilled color="white" />
+                    </div>
+                    <p className="text-gray-700 mt-1.5">
+                      Количество очков за ответ: {difficultyInfo?.scoreAdd}
                     </p>
                   </div>
                 </div>

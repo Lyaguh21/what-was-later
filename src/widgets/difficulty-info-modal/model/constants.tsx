@@ -1,3 +1,4 @@
+import { difficulties } from "@/entities/settings";
 import type { IDifficultyInfoModal } from "./type";
 
 export const DifficultyInfo: IDifficultyInfoModal[] = [
@@ -7,12 +8,15 @@ export const DifficultyInfo: IDifficultyInfoModal[] = [
     difficultyName: "Легко",
     description:
       "Идеально для начинающих! События отличаются значительным промежутком времени.",
-    windowTitle: "Разница между событиями: более 30 лет",
+
     difficultyEventTitle: "Известные исторические события",
     recommendationTitle: "Идеально для первых игр",
     firstCoupleEvents: "Крещение Руси (988) vs Октябрьская революция (1917)",
     secondCoupleEvents: "Первый компьютер (1946) vs Создание iPhone (2007)",
     color: "bg-gradient-to-r from-emerald-400 to-emerald-500",
+    scoreAdd: difficulties[0].scoreAdd,
+    windowEnd: difficulties[0].windowEnd,
+    windowStart: difficulties[0].windowStart,
   },
   {
     icon: "🔵",
@@ -20,25 +24,31 @@ export const DifficultyInfo: IDifficultyInfoModal[] = [
     difficultyName: "Средний",
     description:
       "Для тех, кто уже знаком с историей. События ближе друг к другу по времени.",
-    windowTitle: "Разница между событиями: 20-30 лет",
+
     difficultyEventTitle: "Требуется базовое знание истории",
     recommendationTitle: "Сбалансированная сложность",
     firstCoupleEvents: "Открытие пенициллина (1928) vs Первый компьютер (1946)",
     secondCoupleEvents: "Первый спутник (1957) vs Полёт Гагарина (1961)",
     color: "bg-gradient-to-r from-blue-400 to-blue-500",
+    scoreAdd: difficulties[1].scoreAdd,
+    windowEnd: difficulties[1].windowEnd,
+    windowStart: difficulties[1].windowStart,
   },
   {
     icon: "🟠",
     key: "hard",
     difficultyName: "Сложный",
     description: "Для истинных знатоков! События произошли в одну эпоху.",
-    windowTitle: "Разница между событиями: 5-20 лет",
+
     difficultyEventTitle: "Нужны глубокие знания истории",
     recommendationTitle: "Высокая сложность",
     firstCoupleEvents:
       "Изобретение Интернета (1989) vs Падение Берлинской стены (1989)",
     secondCoupleEvents: "Создание Python (1991) vs Создание JavaScript (1995)",
     color: "bg-gradient-to-r from-orange-400 to-orange-500",
+    scoreAdd: difficulties[2].scoreAdd,
+    windowEnd: difficulties[2].windowEnd,
+    windowStart: difficulties[2].windowStart,
   },
 
   {
@@ -47,12 +57,15 @@ export const DifficultyInfo: IDifficultyInfoModal[] = [
     difficultyName: "Невозможный",
     description:
       "Экстремальный вызов! События практически одновременны. Только для экспертов!",
-    windowTitle: "Разница между событиями: 1-5 лет",
+
     difficultyEventTitle: "Требуется экспертное знание дат",
     recommendationTitle: "Максимальная сложность",
     firstCoupleEvents:
       "Чернобыльская катастрофа (1986) vs Падение Берлинской стены (1989)",
     secondCoupleEvents: "Создание GitHub (2008) vs Первый iPhone (2007)",
     color: "bg-gradient-to-r from-purple-400 to-purple-500",
+    scoreAdd: difficulties[3].scoreAdd,
+    windowEnd: difficulties[3].windowEnd,
+    windowStart: difficulties[3].windowStart,
   },
 ];

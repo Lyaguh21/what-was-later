@@ -6,6 +6,7 @@ import {
 } from "@tabler/icons-react";
 import type { IDifficultyCard } from "./type";
 
+//? Карточка в меню
 export const difficulties: IDifficultyCard[] = [
   {
     key: "easy",

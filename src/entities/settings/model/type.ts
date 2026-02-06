@@ -7,6 +7,7 @@ export interface ICategory {
 
 export type ICategoryCard = Pick<ICategory, "key" | "name"> & {
   icon: React.ReactNode;
+  soon: boolean;
 };
 
 //? Сложность
