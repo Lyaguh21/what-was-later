@@ -6,6 +6,7 @@ import {
   setFirstEvent,
 } from "@/entities/game";
 import { pickNextEvent } from "./pickNextEvent";
+import { setVisibleGameCompletedModal } from "@/entities/view";
 
 export const nextRound = createAsyncThunk<void, void, { state: RootState }>(
   "game/nextRound",
@@ -19,6 +20,11 @@ export const nextRound = createAsyncThunk<void, void, { state: RootState }>(
     //* создаем новое событие из тех которых не было
     const first =
       historyEvents[notUsedIds[Math.floor(Math.random() * notUsedIds.length)]];
+
+    if (!first || !state.game.notUsedIds) {
+      dispatch(setVisibleGameCompletedModal(true));
+      return undefined;
+    }
 
     dispatch(setFirstEvent(first));
     dispatch(pushUsedId(first.id));

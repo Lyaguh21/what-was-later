@@ -10,6 +10,7 @@ import { Navigate } from "react-router";
 import ButtonsControl from "./components/ButtonsControl";
 import GameOverModal from "@/widgets/game-over-modal/GameOverModal";
 import LoaderAndErrorSection from "./components/LoaderAndErrorSection";
+import { GameCompletedModal } from "@/widgets/game-completed-modal";
 
 export default function Game() {
   const category = useAppSelector(selectCategory);
@@ -24,10 +25,11 @@ export default function Game() {
     <div className="flex flex-col h-full grow justify-center items-center">
       <Header />
       <GameEventCardSection />
-      
+
       <ButtonsControl />
       <LoaderAndErrorSection />
       <GameOverModal />
+      <GameCompletedModal />
     </div>
   );
 }

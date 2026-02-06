@@ -6,3 +6,6 @@ export const selectVisibleGameOverModal = (state: RootState) =>
 
 export const selectVisibleDifficultyModal = (state: RootState) =>
   state.view.ui.visibleDifficultyModal;
+
+export const selectVisibleGameCompletedModal = (state: RootState) =>
+  state.view.ui.visibleGameCompletedModal;

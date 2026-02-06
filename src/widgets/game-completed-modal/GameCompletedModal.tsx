@@ -3,12 +3,12 @@ import {
   selectGameStreak,
   selectGameTopScore,
 } from "@/entities/game";
-import { selectVisibleGameOverModal } from "@/entities/view";
+import { selectVisibleGameCompletedModal } from "@/entities/view";
 
 import { useAppSelector } from "@/shared/lib";
 import {
   IconFlameFilled,
-  IconSkull,
+  IconLaurelWreathFilled,
   IconStarFilled,
   IconTrophyFilled,
 } from "@tabler/icons-react";
@@ -16,8 +16,8 @@ import { AnimatePresence, motion } from "motion/react";
 
 import { ButtonMenuControl } from "../buttons-menu-control";
 
-export default function GameOverModal() {
-  const visibleGameOverModal = useAppSelector(selectVisibleGameOverModal);
+export default function GameCompletedModal() {
+  const isVisible = useAppSelector(selectVisibleGameCompletedModal);
 
   const topScore = useAppSelector(selectGameTopScore);
   const score = useAppSelector(selectGameScore);
@@ -26,7 +26,7 @@ export default function GameOverModal() {
 
   return (
     <AnimatePresence>
-      {visibleGameOverModal && (
+      {isVisible && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 1.2 } }}
@@ -40,10 +40,18 @@ export default function GameOverModal() {
             transition={{ duration: 0.3 }}
             className="modal-content bg-white rounded-3xl shadow-2xl max-w-md w-full mx-4 overflow-hidden"
           >
-            <div className="bg-linear-to-r from-red-500 to-pink-500 px-8 py-6 text-center">
-              <IconSkull color="white" size={64} className="mx-auto" />
-              <h2 className="text-white text-3xl font-bold">Игра окончена!</h2>
+            <div className="bg-linear-to-r from-green-500 to-emerald-500 px-8 py-6 text-center">
+              <IconLaurelWreathFilled
+                color="white"
+                size={64}
+                className="mx-auto"
+              />
+              <h2 className="text-white text-3xl font-bold">Успешно</h2>
             </div>
+
+            <p className="text-gray-600 text-md font-bold text-center">
+              Событий больше не осталось, попробуйте новую сложность!
+            </p>
 
             <div className="p-8 text-center">
               {isNewRecord && (

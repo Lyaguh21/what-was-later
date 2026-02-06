@@ -5,6 +5,7 @@ interface ViewState {
   ui: {
     visibleNextRoundButton: boolean;
     visibleGameOverModal: boolean;
+    visibleGameCompletedModal: boolean;
 
     visibleDifficultyModal: boolean;
   };
@@ -14,6 +15,7 @@ const viewInitialState: ViewState = {
   ui: {
     visibleNextRoundButton: false,
     visibleGameOverModal: false,
+    visibleGameCompletedModal: false,
 
     visibleDifficultyModal: false,
   },
@@ -31,6 +33,9 @@ export const viewSlice = createSlice({
       state.ui.visibleGameOverModal = action.payload;
     },
 
+    setVisibleGameCompletedModal: (state, action) => {
+      state.ui.visibleGameCompletedModal = action.payload;
+    },
     setVisibleDifficultyModal: (state, action) => {
       state.ui.visibleDifficultyModal = action.payload;
     },
@@ -40,6 +45,7 @@ export const viewSlice = createSlice({
     builder.addCase(gameSlice.actions.resetGame, (state) => {
       state.ui.visibleNextRoundButton = false;
       state.ui.visibleGameOverModal = false;
+      state.ui.visibleGameCompletedModal = false;
     });
   },
 });
@@ -48,5 +54,6 @@ export const {
   setVisibleNextRoundButton,
   setVisibleGameOverModal,
   setVisibleDifficultyModal,
+  setVisibleGameCompletedModal,
 } = viewSlice.actions;
 export default viewSlice.reducer;

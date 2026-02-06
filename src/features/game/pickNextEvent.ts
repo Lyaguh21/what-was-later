@@ -7,7 +7,7 @@ import {
   parseYear,
 } from "./model/game-events-sorted";
 import { delNotUsedId } from "@/entities/game";
-import { setVisibleGameOverModal } from "@/entities/view";
+import { setVisibleGameCompletedModal } from "@/entities/view";
 
 type Arg = { firstEventId: number };
 
@@ -128,8 +128,8 @@ export const pickNextEvent = createAsyncThunk<
   }
 
   //? Если брать нечего, то конец игры
-  if (!pick) {
-    dispatch(setVisibleGameOverModal(true));
+  if (!pick || !state.game.notUsedIds) {
+    dispatch(setVisibleGameCompletedModal(true));
     return undefined;
   }
 
