@@ -1,6 +1,3 @@
-import { IconRocket } from "@tabler/icons-react";
-import { Button } from "@/shared/ui/Button";
-
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import {
   selectCategory,
@@ -16,6 +13,8 @@ import GameModsCardSection from "./components/GameModsCardSection";
 import DifficultiesCardSection from "./components/DifficultiesCardSection";
 import { addCountGame, resetGame } from "@/entities/game";
 import { startGame } from "@/features/game";
+import { ButtonControl } from "./components/ButtonControl";
+import { DifficultyInfoModal } from "@/widgets/DifficultyInfoModal";
 
 export default function Menu() {
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ export default function Menu() {
   const selectedDifficulty = useAppSelector(selectDifficulty);
   const selectedCategory = useAppSelector(selectCategory);
 
-  const navigateToGame = () => {
+  const handleStartGame = () => {
     setAnimated(true);
     setShowStartButton(false);
     dispatch(startGame());
@@ -117,24 +116,12 @@ export default function Menu() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {visibleStartGameButton && showStartButton && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6 }}
-            className="fixed bottom-5 left-1/2 transform -translate-x-1/2"
-          >
-            <Button
-              text="Начать игру"
-              iconLeft={<IconRocket size={32} />}
-              onClick={navigateToGame}
-              disabled={!visibleStartGameButton}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ButtonControl
+        visibleStartGameButton={visibleStartGameButton}
+        showStartButton={showStartButton}
+        handleStartGame={handleStartGame}
+      />
+      <DifficultyInfoModal />
     </>
   );
 }

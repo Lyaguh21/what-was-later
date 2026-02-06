@@ -4,16 +4,18 @@ import { createSlice } from "@reduxjs/toolkit";
 interface ViewState {
   ui: {
     visibleNextRoundButton: boolean;
-
     visibleGameOverModal: boolean;
+
+    visibleDifficultyModal: boolean;
   };
 }
 
 const viewInitialState: ViewState = {
   ui: {
     visibleNextRoundButton: false,
-
     visibleGameOverModal: false,
+
+    visibleDifficultyModal: false,
   },
 };
 
@@ -28,6 +30,10 @@ export const viewSlice = createSlice({
     setVisibleGameOverModal: (state, action) => {
       state.ui.visibleGameOverModal = action.payload;
     },
+
+    setVisibleDifficultyModal: (state, action) => {
+      state.ui.visibleDifficultyModal = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -38,6 +44,9 @@ export const viewSlice = createSlice({
   },
 });
 
-export const { setVisibleNextRoundButton, setVisibleGameOverModal } =
-  viewSlice.actions;
+export const {
+  setVisibleNextRoundButton,
+  setVisibleGameOverModal,
+  setVisibleDifficultyModal,
+} = viewSlice.actions;
 export default viewSlice.reducer;

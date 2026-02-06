@@ -1,6 +1,11 @@
-import type { IDifficultyCard } from "@/entities/difficulties";
-import { selectDifficulty, setDifficulty } from "@/entities/settings";
+import {
+  selectDifficulty,
+  setDifficulty,
+  type IDifficultyCard,
+} from "@/entities/settings";
+import { setVisibleDifficultyModal } from "@/entities/view";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { IconInfoCircle } from "@tabler/icons-react";
 import cn from "classnames";
 
 export default function DifficultyCard({
@@ -28,9 +33,13 @@ export default function DifficultyCard({
         <div className="text-white font-bold text-2xl">{difficulty.name}</div>
       </div>
 
-      <div className="bg-white/20 rounded-lg py-1 px-1 text-white/90 text-xs font-medium w-19">
-        {difficulty.tag}
-      </div>
+      <button
+        className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all"
+        title="Информация о сложности"
+        onClick={() => dispatch(setVisibleDifficultyModal(true))}
+      >
+        <IconInfoCircle size={32} color="white" />
+      </button>
     </button>
   );
 }
