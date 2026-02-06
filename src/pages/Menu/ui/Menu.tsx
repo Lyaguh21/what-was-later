@@ -14,7 +14,7 @@ import DifficultiesCardSection from "./components/DifficultiesCardSection";
 import { addCountGame, resetGame } from "@/entities/game";
 import { startGame } from "@/features/game";
 import { ButtonControl } from "./components/ButtonControl";
-import { DifficultyInfoModal } from "@/widgets/DifficultyInfoModal";
+import { DifficultyInfoModal } from "@/widgets/difficulty-info-modal";
 
 export default function Menu() {
   const navigate = useNavigate();

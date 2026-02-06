@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { IGameEvent } from "../type";
-import { allHistoryEvents } from "../allHistoryEvents";
+import { allHistoryEvents } from "../allHistoryEvents.tsx";
 
 interface initialGameStateType {
   score: number;
@@ -42,7 +42,7 @@ export const gameSlice = createSlice({
     }, //* задать счет
     addScore: (state, action) => {
       state.score += action.payload;
-    }, //* добавить количество очков  счету
+    }, //* добавить количество очков  счету в зависимости от сложности
     setTopScore: (state, action) => {
       if (action.payload > state.topScore) {
         state.topScore = action.payload;

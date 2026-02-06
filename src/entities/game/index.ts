@@ -31,4 +31,4 @@ export {
 } from "./model/store/gameSelectors";
 
 export type { IGameEvent } from "./model/type";
-export { allHistoryEvents } from "./model/allHistoryEvents";
+export { allHistoryEvents } from "./model/allHistoryEvents.tsx";

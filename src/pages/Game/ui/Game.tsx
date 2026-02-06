@@ -24,8 +24,8 @@ export default function Game() {
     <div className="flex flex-col h-full grow justify-center items-center">
       <Header />
       <GameEventCardSection />
+      
       <ButtonsControl />
-
       <LoaderAndErrorSection />
       <GameOverModal />
     </div>
